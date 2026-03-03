@@ -2,26 +2,13 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import products from "@/data/products.json";
-
-interface Product {
-  id: string;
-  name: string;
-  category: string;
-  categoryLabel: string;
-  description: string;
-  price: string;
-  unit: string;
-  specs?: Record<string, string>;
-  availability?: string;
-}
+import productsData from "@/data/products.json";
+import type { Product } from "@/types/product";
+import { CATEGORY_OPTIONS } from "@/types/product";
 
 const categories = [
   { key: "all", label: "Alle" },
-  { key: "ton", label: "Tontechnik" },
-  { key: "licht", label: "Lichttechnik" },
-  { key: "buehne", label: "Bühnentechnik" },
-  { key: "video", label: "Video" },
+  ...CATEGORY_OPTIONS,
 ];
 
 function ProductModal({ product, onClose }: { product: Product; onClose: () => void }) {
@@ -50,10 +37,18 @@ function ProductModal({ product, onClose }: { product: Product; onClose: () => v
         </button>
 
         {/* Header image area */}
-        <div className="w-full aspect-[16/8] bg-gradient-to-br from-gray-100 to-gray-50 flex items-center justify-center rounded-t-2xl">
+        <div className="relative w-full aspect-[16/8] bg-gradient-to-br from-gray-100 to-gray-50 flex items-center justify-center rounded-t-2xl">
           <div className="text-brand/20 font-heading text-6xl font-bold">
             {product.categoryLabel.slice(0, 2).toUpperCase()}
           </div>
+          {product.featured && (
+            <div className="absolute top-3 left-3 flex items-center gap-1 px-2.5 py-1 rounded-full bg-amber-400 text-white text-xs font-semibold shadow-sm">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
+              Featured
+            </div>
+          )}
         </div>
 
         {/* Content */}
@@ -78,7 +73,9 @@ function ProductModal({ product, onClose }: { product: Product; onClose: () => v
                 className={`ml-auto text-xs font-semibold px-2.5 py-1 rounded-full ${
                   product.availability === "Verfügbar"
                     ? "bg-green-50 text-green-600"
-                    : "bg-amber-50 text-amber-600"
+                    : product.availability === "Auf Anfrage"
+                      ? "bg-amber-50 text-amber-600"
+                      : "bg-red-50 text-red-500"
                 }`}
               >
                 {product.availability}
@@ -120,7 +117,11 @@ export default function InventarPage() {
   const [search, setSearch] = useState("");
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
-  const filtered = (products as unknown as Product[]).filter((p) => {
+  const products = (productsData as unknown as Product[]).slice().sort(
+    (a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0)
+  );
+
+  const filtered = products.filter((p) => {
     const matchCat = activeCategory === "all" || p.category === activeCategory;
     const q = search.toLowerCase().trim();
     const matchSearch =
@@ -199,10 +200,18 @@ export default function InventarPage() {
                 key={product.id}
                 className="group bg-white border border-gray-200 rounded-2xl overflow-hidden hover:border-brand/30 hover:shadow-lg hover:shadow-brand/5 transition-all duration-300 hover:-translate-y-1"
               >
-                <div className="w-full aspect-[16/10] bg-gradient-to-br from-gray-100 to-gray-50 flex items-center justify-center">
+                <div className="relative w-full aspect-[16/10] bg-gradient-to-br from-gray-100 to-gray-50 flex items-center justify-center">
                   <div className="text-brand/30 font-heading text-4xl font-bold">
                     {product.categoryLabel.slice(0, 2).toUpperCase()}
                   </div>
+                  {product.featured && (
+                    <div className="absolute top-3 left-3 flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-400 text-white text-xs font-semibold shadow-sm">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                      </svg>
+                      Featured
+                    </div>
+                  )}
                 </div>
                 <div className="p-5">
                   <p className="text-xs font-semibold uppercase tracking-wider text-brand mb-1">

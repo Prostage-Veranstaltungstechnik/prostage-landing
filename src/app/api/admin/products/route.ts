@@ -1,31 +1,24 @@
 import { NextResponse } from "next/server";
-import { promises as fs } from "fs";
-import path from "path";
-
-const PRODUCTS_PATH = path.join(process.cwd(), "src/data/products.json");
-
-async function readProducts() {
-  const data = await fs.readFile(PRODUCTS_PATH, "utf-8");
-  return JSON.parse(data);
-}
-
-async function writeProducts(products: unknown[]) {
-  await fs.writeFile(PRODUCTS_PATH, JSON.stringify(products, null, 2) + "\n");
-}
+import { readProducts, writeProducts, generateId } from "@/lib/products";
+import type { Product } from "@/types/product";
+import { CATEGORY_LABELS } from "@/types/product";
 
 export async function GET() {
   try {
     const products = await readProducts();
     return NextResponse.json(products);
   } catch {
-    return NextResponse.json({ error: "Fehler beim Laden der Produkte." }, { status: 500 });
+    return NextResponse.json(
+      { error: "Fehler beim Laden der Produkte." },
+      { status: 500 }
+    );
   }
 }
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { name, category, description } = body;
+    const { name, category, description, price, unit, availability, featured, specs, image } = body;
 
     if (!name || !category || !description) {
       return NextResponse.json(
@@ -34,34 +27,31 @@ export async function POST(request: Request) {
       );
     }
 
-    const categoryLabels: Record<string, string> = {
-      ton: "Tontechnik",
-      licht: "Lichttechnik",
-      buehne: "Bühnentechnik",
-      video: "Video",
-    };
-
     const products = await readProducts();
 
-    const id = name
-      .toLowerCase()
-      .replace(/[äÄ]/g, "ae")
-      .replace(/[öÖ]/g, "oe")
-      .replace(/[üÜ]/g, "ue")
-      .replace(/[ß]/g, "ss")
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/(^-|-$)/g, "");
+    let id = generateId(name);
+    if (products.some((p: Product) => p.id === id)) {
+      id = `${id}-${Date.now()}`;
+    }
 
-    const newProduct = {
+    const maxOrder = products.reduce(
+      (max, p) => Math.max(max, p.sortOrder ?? 0),
+      -1
+    );
+
+    const newProduct: Product = {
       id,
       name,
       category,
-      categoryLabel: categoryLabels[category] || category,
+      categoryLabel: CATEGORY_LABELS[category] || category,
       description,
-      price: "Auf Anfrage",
-      unit: "/Tag",
-      specs: {},
-      availability: "Verfügbar",
+      price: price || "Auf Anfrage",
+      unit: unit || "/Tag",
+      specs: specs || {},
+      availability: availability || "Verfügbar",
+      featured: featured ?? false,
+      sortOrder: maxOrder + 1,
+      image: image || null,
     };
 
     products.push(newProduct);
@@ -69,6 +59,9 @@ export async function POST(request: Request) {
 
     return NextResponse.json(newProduct, { status: 201 });
   } catch {
-    return NextResponse.json({ error: "Fehler beim Erstellen des Produkts." }, { status: 500 });
+    return NextResponse.json(
+      { error: "Fehler beim Erstellen des Produkts." },
+      { status: 500 }
+    );
   }
 }

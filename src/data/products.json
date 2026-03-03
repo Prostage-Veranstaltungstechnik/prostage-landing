@@ -13,7 +13,10 @@
       "Abstrahlwinkel": "110° x 10°",
       "Gewicht": "28 kg"
     },
-    "availability": "Verfügbar"
+    "availability": "Verfügbar",
+    "featured": true,
+    "sortOrder": 0,
+    "image": null
   },
   {
     "id": "subwoofer",
@@ -29,7 +32,10 @@
       "Treiber": "2x 18\" Neodym",
       "Gewicht": "2x 55 kg"
     },
-    "availability": "Verfügbar"
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 1,
+    "image": null
   },
   {
     "id": "mischpult",
@@ -45,7 +51,10 @@
       "Abtastrate": "96 kHz",
       "Steuerung": "iPad / Laptop Remote"
     },
-    "availability": "Verfügbar"
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 2,
+    "image": null
   },
   {
     "id": "mikrofon-set",
@@ -61,7 +70,10 @@
       "Reichweite": "bis 100m",
       "Akkulaufzeit": "ca. 8 Stunden"
     },
-    "availability": "Verfügbar"
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 3,
+    "image": null
   },
   {
     "id": "moving-heads",
@@ -77,7 +89,10 @@
       "DMX-Kanäle": "16 / 24 Kanal",
       "Gewicht": "4x 19 kg"
     },
-    "availability": "Verfügbar"
+    "availability": "Verfügbar",
+    "featured": true,
+    "sortOrder": 4,
+    "image": null
   },
   {
     "id": "led-par",
@@ -93,7 +108,10 @@
       "Steuerung": "DMX / Standalone",
       "Gewicht": "12x 2,5 kg"
     },
-    "availability": "Verfügbar"
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 5,
+    "image": null
   },
   {
     "id": "followspot",
@@ -109,7 +127,10 @@
       "Zoom": "8°–22°",
       "Gewicht": "35 kg inkl. Stativ"
     },
-    "availability": "Verfügbar"
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 6,
+    "image": null
   },
   {
     "id": "grandma3",
@@ -125,13 +146,16 @@
       "Encoder": "6 Dual-Encoder",
       "Netzwerk": "MA-Net3, sACN, Art-Net"
     },
-    "availability": "Auf Anfrage"
+    "availability": "Auf Anfrage",
+    "featured": true,
+    "sortOrder": 7,
+    "image": null
   },
   {
     "id": "traversen",
     "name": "Traversensystem",
-    "category": "buehne",
-    "categoryLabel": "Bühnentechnik",
+    "category": "vermietung",
+    "categoryLabel": "Vermietung",
     "description": "Modulare Alu-Traversen für flexible Aufbauten und sichere Lastabtragung.",
     "price": "ab 200€",
     "unit": "/Tag",
@@ -141,13 +165,16 @@
       "Tragkraft": "bis 500 kg/m",
       "Längen": "0,5m – 4m Module"
     },
-    "availability": "Verfügbar"
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 8,
+    "image": null
   },
   {
     "id": "buehnenpodest",
     "name": "Bühnenpodest-Set 4x4m",
-    "category": "buehne",
-    "categoryLabel": "Bühnentechnik",
+    "category": "vermietung",
+    "categoryLabel": "Vermietung",
     "description": "Stabiles Bühnensystem mit variablen Höhen — ideal für Konzerte und Events.",
     "price": "ab 350€",
     "unit": "/Tag",
@@ -157,13 +184,16 @@
       "Tragkraft": "750 kg/m²",
       "Material": "Stahl / Siebdruckplatte"
     },
-    "availability": "Verfügbar"
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 9,
+    "image": null
   },
   {
     "id": "kettenzug",
     "name": "Kettenzug 1t",
-    "category": "buehne",
-    "categoryLabel": "Bühnentechnik",
+    "category": "vermietung",
+    "categoryLabel": "Vermietung",
     "description": "Elektrischer Kettenzug mit 1 Tonne Tragkraft für sicheres Rigging.",
     "price": "ab 80€",
     "unit": "/Tag",
@@ -173,13 +203,16 @@
       "Geschwindigkeit": "4 m/min",
       "Steuerung": "Direktsteuerung / DMX"
     },
-    "availability": "Verfügbar"
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 10,
+    "image": null
   },
   {
     "id": "led-wall",
     "name": "LED Wall (pro m²)",
-    "category": "video",
-    "categoryLabel": "Video",
+    "category": "fullservice",
+    "categoryLabel": "Full Service",
     "description": "Hochauflösende LED-Module für beeindruckende Videowände in jeder Größe.",
     "price": "ab 250€",
     "unit": "/Tag",
@@ -189,13 +222,16 @@
       "Auflösung": "500x500mm Panels",
       "Refresh Rate": "3840 Hz"
     },
-    "availability": "Verfügbar"
+    "availability": "Verfügbar",
+    "featured": true,
+    "sortOrder": 11,
+    "image": null
   },
   {
     "id": "beamer",
     "name": "Beamer 10.000 Lumen",
-    "category": "video",
-    "categoryLabel": "Video",
+    "category": "fullservice",
+    "categoryLabel": "Full Service",
     "description": "Lichtstarker Projektor für Präsentationen, Mapping und große Projektionsflächen.",
     "price": "ab 250€",
     "unit": "/Tag",
@@ -205,6 +241,9 @@
       "Kontrast": "10.000:1",
       "Objektiv": "Wechselobjektiv-System"
     },
-    "availability": "Auf Anfrage"
+    "availability": "Auf Anfrage",
+    "featured": false,
+    "sortOrder": 12,
+    "image": null
   }
 ]
