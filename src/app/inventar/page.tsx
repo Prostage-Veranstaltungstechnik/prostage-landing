@@ -1,8 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import productsData from "@/data/products.json";
 import type { Product } from "@/types/product";
 import { CATEGORY_OPTIONS } from "@/types/product";
 
@@ -11,21 +10,38 @@ const categories = [
   ...CATEGORY_OPTIONS,
 ];
 
+function ProductImage({ product, className }: { product: Product; className?: string }) {
+  if (product.image) {
+    return (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img
+        src={product.image}
+        alt={product.name}
+        className={`w-full h-full object-cover ${className || ""}`}
+      />
+    );
+  }
+  return (
+    <div className={`w-full h-full bg-gradient-to-br from-gray-100 to-gray-50 flex items-center justify-center ${className || ""}`}>
+      <div className="text-brand/20 font-heading text-4xl font-bold">
+        {product.categoryLabel.slice(0, 2).toUpperCase()}
+      </div>
+    </div>
+  );
+}
+
 function ProductModal({ product, onClose }: { product: Product; onClose: () => void }) {
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4"
       onClick={onClose}
     >
-      {/* Backdrop */}
       <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
 
-      {/* Modal */}
       <div
         className="relative bg-white rounded-2xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Close button */}
         <button
           onClick={onClose}
           className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-all z-10"
@@ -36,11 +52,8 @@ function ProductModal({ product, onClose }: { product: Product; onClose: () => v
           </svg>
         </button>
 
-        {/* Header image area */}
-        <div className="relative w-full aspect-[16/8] bg-gradient-to-br from-gray-100 to-gray-50 flex items-center justify-center rounded-t-2xl">
-          <div className="text-brand/20 font-heading text-6xl font-bold">
-            {product.categoryLabel.slice(0, 2).toUpperCase()}
-          </div>
+        <div className="relative w-full aspect-[16/8] rounded-t-2xl overflow-hidden">
+          <ProductImage product={product} />
           {product.featured && (
             <div className="absolute top-3 left-3 flex items-center gap-1 px-2.5 py-1 rounded-full bg-amber-400 text-white text-xs font-semibold shadow-sm">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="none">
@@ -51,7 +64,6 @@ function ProductModal({ product, onClose }: { product: Product; onClose: () => v
           )}
         </div>
 
-        {/* Content */}
         <div className="p-6">
           <p className="text-xs font-semibold uppercase tracking-wider text-brand mb-1">
             {product.categoryLabel}
@@ -83,7 +95,6 @@ function ProductModal({ product, onClose }: { product: Product; onClose: () => v
             )}
           </div>
 
-          {/* Specs */}
           {product.specs && Object.keys(product.specs).length > 0 && (
             <div className="mb-5">
               <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">
@@ -116,10 +127,21 @@ export default function InventarPage() {
   const [activeCategory, setActiveCategory] = useState("all");
   const [search, setSearch] = useState("");
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const products = (productsData as unknown as Product[]).slice().sort(
-    (a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0)
-  );
+  useEffect(() => {
+    fetch("/api/admin/products")
+      .then((res) => res.json())
+      .then((data) => {
+        const sorted = (data as Product[]).sort(
+          (a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0)
+        );
+        setProducts(sorted);
+      })
+      .catch(() => {})
+      .finally(() => setLoading(false));
+  }, []);
 
   const filtered = products.filter((p) => {
     const matchCat = activeCategory === "all" || p.category === activeCategory;
@@ -189,7 +211,9 @@ export default function InventarPage() {
 
       {/* GRID */}
       <section className="max-w-7xl mx-auto px-6 pb-20">
-        {filtered.length === 0 ? (
+        {loading ? (
+          <div className="text-center py-16 text-gray-400">Lade Produkte…</div>
+        ) : filtered.length === 0 ? (
           <div className="text-center py-16 text-gray-400">
             Keine Produkte gefunden.
           </div>
@@ -200,10 +224,8 @@ export default function InventarPage() {
                 key={product.id}
                 className="group bg-white border border-gray-200 rounded-2xl overflow-hidden hover:border-brand/30 hover:shadow-lg hover:shadow-brand/5 transition-all duration-300 hover:-translate-y-1"
               >
-                <div className="relative w-full aspect-[16/10] bg-gradient-to-br from-gray-100 to-gray-50 flex items-center justify-center">
-                  <div className="text-brand/30 font-heading text-4xl font-bold">
-                    {product.categoryLabel.slice(0, 2).toUpperCase()}
-                  </div>
+                <div className="relative w-full aspect-[16/10] overflow-hidden">
+                  <ProductImage product={product} />
                   {product.featured && (
                     <div className="absolute top-3 left-3 flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-400 text-white text-xs font-semibold shadow-sm">
                       <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" stroke="none">
