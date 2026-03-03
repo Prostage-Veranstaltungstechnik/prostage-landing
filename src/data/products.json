@@ -1,0 +1,119 @@
+[
+  {
+    "id": "line-array",
+    "name": "Line Array Element",
+    "category": "ton",
+    "categoryLabel": "Tontechnik",
+    "description": "Hochleistungs-Line-Array für große Beschallungen mit perfekter Abdeckung.",
+    "price": "ab 120€",
+    "unit": "/Tag"
+  },
+  {
+    "id": "subwoofer",
+    "name": "Subwoofer-System (2er Set)",
+    "category": "ton",
+    "categoryLabel": "Tontechnik",
+    "description": "Kraftvolle Tieftonwiedergabe für druckvolle Bässe bei jeder Veranstaltung.",
+    "price": "ab 180€",
+    "unit": "/Tag"
+  },
+  {
+    "id": "mischpult",
+    "name": "Digitales Mischpult",
+    "category": "ton",
+    "categoryLabel": "Tontechnik",
+    "description": "Professionelles Digitalpult mit 32+ Kanälen, Effekten und Remote-Steuerung.",
+    "price": "ab 450€",
+    "unit": "/Tag"
+  },
+  {
+    "id": "mikrofon-set",
+    "name": "Wireless Mikrofon-Set (4x)",
+    "category": "ton",
+    "categoryLabel": "Tontechnik",
+    "description": "Vier drahtlose Mikrofone mit stabilem Empfang für Bühne und Konferenz.",
+    "price": "ab 180€",
+    "unit": "/Tag"
+  },
+  {
+    "id": "moving-heads",
+    "name": "Moving Head Set (4x)",
+    "category": "licht",
+    "categoryLabel": "Lichttechnik",
+    "description": "Vier leistungsstarke Moving Heads mit Spot/Wash-Funktion und DMX-Steuerung.",
+    "price": "ab 320€",
+    "unit": "/Tag"
+  },
+  {
+    "id": "led-par",
+    "name": "LED Par Set (12x)",
+    "category": "licht",
+    "categoryLabel": "Lichttechnik",
+    "description": "12 RGBW LED-Scheinwerfer für farbige Ausleuchtung und Stimmungslicht.",
+    "price": "ab 140€",
+    "unit": "/Tag"
+  },
+  {
+    "id": "followspot",
+    "name": "Followspot",
+    "category": "licht",
+    "categoryLabel": "Lichttechnik",
+    "description": "Professioneller Verfolgungsscheinwerfer für gezielte Personen-Ausleuchtung.",
+    "price": "ab 130€",
+    "unit": "/Tag"
+  },
+  {
+    "id": "grandma3",
+    "name": "GrandMA3 Light Pult",
+    "category": "licht",
+    "categoryLabel": "Lichttechnik",
+    "description": "Das Industrie-Standard Lichtpult für professionelle Shows und Produktionen.",
+    "price": "ab 400€",
+    "unit": "/Tag"
+  },
+  {
+    "id": "traversen",
+    "name": "Traversensystem",
+    "category": "buehne",
+    "categoryLabel": "Bühnentechnik",
+    "description": "Modulare Alu-Traversen für flexible Aufbauten und sichere Lastabtragung.",
+    "price": "ab 200€",
+    "unit": "/Tag"
+  },
+  {
+    "id": "buehnenpodest",
+    "name": "Bühnenpodest-Set 4x4m",
+    "category": "buehne",
+    "categoryLabel": "Bühnentechnik",
+    "description": "Stabiles Bühnensystem mit variablen Höhen — ideal für Konzerte und Events.",
+    "price": "ab 350€",
+    "unit": "/Tag"
+  },
+  {
+    "id": "kettenzug",
+    "name": "Kettenzug 1t",
+    "category": "buehne",
+    "categoryLabel": "Bühnentechnik",
+    "description": "Elektrischer Kettenzug mit 1 Tonne Tragkraft für sicheres Rigging.",
+    "price": "ab 80€",
+    "unit": "/Tag"
+  },
+  {
+    "id": "led-wall",
+    "name": "LED Wall (pro m²)",
+    "category": "video",
+    "categoryLabel": "Video",
+    "description": "Hochauflösende LED-Module für beeindruckende Videowände in jeder Größe.",
+    "price": "ab 250€",
+    "unit": "/Tag"
+  },
+  {
+    "id": "beamer",
+    "name": "Beamer 10.000 Lumen",
+    "category": "video",
+    "categoryLabel": "Video",
+    "description": "Lichtstarker Projektor für Präsentationen, Mapping und große Projektionsflächen.",
+    "price": "ab 250€",
+    "unit": "/Tag"
+  }
+]
