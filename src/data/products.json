@@ -6,7 +6,14 @@
     "categoryLabel": "Tontechnik",
     "description": "Hochleistungs-Line-Array für große Beschallungen mit perfekter Abdeckung.",
     "price": "ab 120€",
-    "unit": "/Tag"
+    "unit": "/Tag",
+    "specs": {
+      "Leistung": "1400W RMS",
+      "Frequenzbereich": "55 Hz – 20 kHz",
+      "Abstrahlwinkel": "110° x 10°",
+      "Gewicht": "28 kg"
+    },
+    "availability": "Verfügbar"
   },
   {
     "id": "subwoofer",
@@ -15,7 +22,14 @@
     "categoryLabel": "Tontechnik",
     "description": "Kraftvolle Tieftonwiedergabe für druckvolle Bässe bei jeder Veranstaltung.",
     "price": "ab 180€",
-    "unit": "/Tag"
+    "unit": "/Tag",
+    "specs": {
+      "Leistung": "2x 2000W RMS",
+      "Frequenzbereich": "28 Hz – 150 Hz",
+      "Treiber": "2x 18\" Neodym",
+      "Gewicht": "2x 55 kg"
+    },
+    "availability": "Verfügbar"
   },
   {
     "id": "mischpult",
@@ -24,7 +38,14 @@
     "categoryLabel": "Tontechnik",
     "description": "Professionelles Digitalpult mit 32+ Kanälen, Effekten und Remote-Steuerung.",
     "price": "ab 450€",
-    "unit": "/Tag"
+    "unit": "/Tag",
+    "specs": {
+      "Kanäle": "32 Eingänge / 16 Busse",
+      "Effekte": "8 Stereo-Effektprozessoren",
+      "Abtastrate": "96 kHz",
+      "Steuerung": "iPad / Laptop Remote"
+    },
+    "availability": "Verfügbar"
   },
   {
     "id": "mikrofon-set",
@@ -33,7 +54,14 @@
     "categoryLabel": "Tontechnik",
     "description": "Vier drahtlose Mikrofone mit stabilem Empfang für Bühne und Konferenz.",
     "price": "ab 180€",
-    "unit": "/Tag"
+    "unit": "/Tag",
+    "specs": {
+      "Typ": "Handheld + Headset",
+      "Frequenzband": "UHF 470–865 MHz",
+      "Reichweite": "bis 100m",
+      "Akkulaufzeit": "ca. 8 Stunden"
+    },
+    "availability": "Verfügbar"
   },
   {
     "id": "moving-heads",
@@ -42,7 +70,14 @@
     "categoryLabel": "Lichttechnik",
     "description": "Vier leistungsstarke Moving Heads mit Spot/Wash-Funktion und DMX-Steuerung.",
     "price": "ab 320€",
-    "unit": "/Tag"
+    "unit": "/Tag",
+    "specs": {
+      "Leistung": "4x 280W Osram",
+      "Modus": "Spot / Wash / Beam",
+      "DMX-Kanäle": "16 / 24 Kanal",
+      "Gewicht": "4x 19 kg"
+    },
+    "availability": "Verfügbar"
   },
   {
     "id": "led-par",
@@ -51,7 +86,14 @@
     "categoryLabel": "Lichttechnik",
     "description": "12 RGBW LED-Scheinwerfer für farbige Ausleuchtung und Stimmungslicht.",
     "price": "ab 140€",
-    "unit": "/Tag"
+    "unit": "/Tag",
+    "specs": {
+      "LEDs": "12x 10W RGBW",
+      "Abstrahlwinkel": "25°",
+      "Steuerung": "DMX / Standalone",
+      "Gewicht": "12x 2,5 kg"
+    },
+    "availability": "Verfügbar"
   },
   {
     "id": "followspot",
@@ -60,7 +102,14 @@
     "categoryLabel": "Lichttechnik",
     "description": "Professioneller Verfolgungsscheinwerfer für gezielte Personen-Ausleuchtung.",
     "price": "ab 130€",
-    "unit": "/Tag"
+    "unit": "/Tag",
+    "specs": {
+      "Leistung": "1200W HMI",
+      "Reichweite": "bis 50m",
+      "Zoom": "8°–22°",
+      "Gewicht": "35 kg inkl. Stativ"
+    },
+    "availability": "Verfügbar"
   },
   {
     "id": "grandma3",
@@ -69,7 +118,14 @@
     "categoryLabel": "Lichttechnik",
     "description": "Das Industrie-Standard Lichtpult für professionelle Shows und Produktionen.",
     "price": "ab 400€",
-    "unit": "/Tag"
+    "unit": "/Tag",
+    "specs": {
+      "Universen": "256 DMX-Universen",
+      "Displays": "2x Touchscreen",
+      "Encoder": "6 Dual-Encoder",
+      "Netzwerk": "MA-Net3, sACN, Art-Net"
+    },
+    "availability": "Auf Anfrage"
   },
   {
     "id": "traversen",
@@ -78,7 +134,14 @@
     "categoryLabel": "Bühnentechnik",
     "description": "Modulare Alu-Traversen für flexible Aufbauten und sichere Lastabtragung.",
     "price": "ab 200€",
-    "unit": "/Tag"
+    "unit": "/Tag",
+    "specs": {
+      "Material": "Aluminium 6082-T6",
+      "Profilgröße": "290mm x 290mm",
+      "Tragkraft": "bis 500 kg/m",
+      "Längen": "0,5m – 4m Module"
+    },
+    "availability": "Verfügbar"
   },
   {
     "id": "buehnenpodest",
@@ -87,7 +150,14 @@
     "categoryLabel": "Bühnentechnik",
     "description": "Stabiles Bühnensystem mit variablen Höhen — ideal für Konzerte und Events.",
     "price": "ab 350€",
-    "unit": "/Tag"
+    "unit": "/Tag",
+    "specs": {
+      "Fläche": "4m x 4m (16m²)",
+      "Höhenverstellung": "0,4m – 1,4m",
+      "Tragkraft": "750 kg/m²",
+      "Material": "Stahl / Siebdruckplatte"
+    },
+    "availability": "Verfügbar"
   },
   {
     "id": "kettenzug",
@@ -96,7 +166,14 @@
     "categoryLabel": "Bühnentechnik",
     "description": "Elektrischer Kettenzug mit 1 Tonne Tragkraft für sicheres Rigging.",
     "price": "ab 80€",
-    "unit": "/Tag"
+    "unit": "/Tag",
+    "specs": {
+      "Tragkraft": "1000 kg",
+      "Hubhöhe": "bis 20m",
+      "Geschwindigkeit": "4 m/min",
+      "Steuerung": "Direktsteuerung / DMX"
+    },
+    "availability": "Verfügbar"
   },
   {
     "id": "led-wall",
@@ -105,7 +182,14 @@
     "categoryLabel": "Video",
     "description": "Hochauflösende LED-Module für beeindruckende Videowände in jeder Größe.",
     "price": "ab 250€",
-    "unit": "/Tag"
+    "unit": "/Tag",
+    "specs": {
+      "Pixelpitch": "2,9mm Indoor / 3,9mm Outdoor",
+      "Helligkeit": "5000 nits",
+      "Auflösung": "500x500mm Panels",
+      "Refresh Rate": "3840 Hz"
+    },
+    "availability": "Verfügbar"
   },
   {
     "id": "beamer",
@@ -114,6 +198,13 @@
     "categoryLabel": "Video",
     "description": "Lichtstarker Projektor für Präsentationen, Mapping und große Projektionsflächen.",
     "price": "ab 250€",
-    "unit": "/Tag"
+    "unit": "/Tag",
+    "specs": {
+      "Helligkeit": "10.000 ANSI Lumen",
+      "Auflösung": "WUXGA (1920x1200)",
+      "Kontrast": "10.000:1",
+      "Objektiv": "Wechselobjektiv-System"
+    },
+    "availability": "Auf Anfrage"
   }
 ]
