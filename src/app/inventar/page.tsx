@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import type { Product } from "@/types/product";
 import { CATEGORY_OPTIONS } from "@/types/product";
+import { useCart } from "@/hooks/useCart";
 
 const categories = [
   { key: "all", label: "Alle" },
@@ -30,7 +31,7 @@ function ProductImage({ product, className }: { product: Product; className?: st
   );
 }
 
-function ProductModal({ product, onClose }: { product: Product; onClose: () => void }) {
+function ProductModal({ product, onClose, cart }: { product: Product; onClose: () => void; cart: ReturnType<typeof useCart> }) {
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4"
@@ -111,12 +112,38 @@ function ProductModal({ product, onClose }: { product: Product; onClose: () => v
             </div>
           )}
 
-          <Link
-            href={`/anfrage?produkt=${encodeURIComponent(product.name)}`}
-            className="flex items-center justify-center gap-2 w-full py-3 rounded-xl text-sm font-semibold bg-brand text-white hover:bg-brand-dark transition-all shadow-md shadow-brand/20"
+          <button
+            onClick={() => {
+              if (cart.isInCart(product.id)) {
+                cart.removeItem(product.id);
+              } else {
+                cart.addItem({
+                  id: product.id,
+                  name: product.name,
+                  price: product.price,
+                  unit: product.unit,
+                  category: product.category,
+                  categoryLabel: product.categoryLabel,
+                });
+              }
+            }}
+            className={`flex items-center justify-center gap-2 w-full py-3 rounded-xl text-sm font-semibold transition-all shadow-md shadow-brand/20 ${
+              cart.isInCart(product.id)
+                ? "bg-brand text-white"
+                : "bg-brand text-white hover:bg-brand-dark"
+            }`}
           >
-            Jetzt anfragen
-          </Link>
+            {cart.isInCart(product.id) ? (
+              <>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                Ausgewählt — erneut klicken zum Entfernen
+              </>
+            ) : (
+              "Zur Anfrage hinzufügen"
+            )}
+          </button>
         </div>
       </div>
     </div>
@@ -129,6 +156,7 @@ export default function InventarPage() {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
+  const cart = useCart();
 
   useEffect(() => {
     fetch("/api/admin/products")
@@ -258,12 +286,44 @@ export default function InventarPage() {
                     >
                       Mehr Infos
                     </button>
-                    <Link
-                      href={`/anfrage?produkt=${encodeURIComponent(product.name)}`}
-                      className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-semibold bg-brand/5 border border-brand/20 text-brand hover:bg-brand hover:text-white hover:border-brand transition-all"
+                    <button
+                      onClick={() => {
+                        if (cart.isInCart(product.id)) {
+                          cart.removeItem(product.id);
+                        } else {
+                          cart.addItem({
+                            id: product.id,
+                            name: product.name,
+                            price: product.price,
+                            unit: product.unit,
+                            category: product.category,
+                            categoryLabel: product.categoryLabel,
+                          });
+                        }
+                      }}
+                      className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-semibold border transition-all ${
+                        cart.isInCart(product.id)
+                          ? "bg-brand border-brand text-white"
+                          : "bg-brand/5 border-brand/20 text-brand hover:bg-brand hover:text-white hover:border-brand"
+                      }`}
                     >
-                      Anfragen
-                    </Link>
+                      {cart.isInCart(product.id) ? (
+                        <>
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                            <polyline points="20 6 9 17 4 12" />
+                          </svg>
+                          Ausgewählt
+                        </>
+                      ) : (
+                        <>
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <line x1="12" y1="5" x2="12" y2="19" />
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                          </svg>
+                          Auswählen
+                        </>
+                      )}
+                    </button>
                   </div>
                 </div>
               </div>
@@ -277,7 +337,49 @@ export default function InventarPage() {
         <ProductModal
           product={selectedProduct}
           onClose={() => setSelectedProduct(null)}
+          cart={cart}
         />
+      )}
+
+      {/* Sticky Cart Bar */}
+      {cart.items.length > 0 && (
+        <div className="fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur-md border-t border-gray-200 shadow-[0_-4px_20px_rgba(0,0,0,0.08)]">
+          <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between gap-4">
+            <div className="flex items-center gap-3 min-w-0">
+              <span className="flex items-center justify-center w-9 h-9 rounded-full bg-brand text-white text-sm font-bold flex-shrink-0">
+                {cart.items.length}
+              </span>
+              <div className="min-w-0">
+                <p className="text-sm font-semibold text-gray-900 truncate">
+                  {cart.items.length === 1
+                    ? "1 Artikel ausgewählt"
+                    : `${cart.items.length} Artikel ausgewählt`}
+                </p>
+                <p className="text-xs text-gray-500 truncate">
+                  {cart.items.map((i) => i.name).join(", ")}
+                </p>
+              </div>
+            </div>
+            <div className="flex items-center gap-2 flex-shrink-0">
+              <button
+                onClick={() => cart.clearCart()}
+                className="px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-500 hover:bg-gray-100 transition-all"
+              >
+                Leeren
+              </button>
+              <Link
+                href="/anfrage"
+                className="flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-semibold bg-brand text-white hover:bg-brand-dark transition-all shadow-md shadow-brand/20"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                  <polyline points="22,6 12,13 2,6" />
+                </svg>
+                Jetzt anfragen
+              </Link>
+            </div>
+          </div>
+        </div>
       )}
     </>
   );
