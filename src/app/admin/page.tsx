@@ -736,7 +736,7 @@ export default function AdminPage() {
     <div className="min-h-screen bg-gray-50 flex">
       {/* Sidebar */}
       <aside className="hidden lg:flex flex-col w-64 bg-gray-950 text-white shrink-0">
-        <div className="px-6 py-6 border-b border-gray-800">
+        <div className="px-6 py-4 border-b border-gray-800">
           <h1 className="font-heading text-lg font-bold">
             Pro<span className="text-brand">Stage</span>
           </h1>
