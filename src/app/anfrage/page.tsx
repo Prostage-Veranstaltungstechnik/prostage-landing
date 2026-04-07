@@ -3,6 +3,8 @@
 import { useState, FormEvent } from "react";
 import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
+import Link from "next/link";
+import { useCart } from "@/hooks/useCart";
 
 const leistungen = [
   { key: "fullservice", label: "FullService Events" },
@@ -14,6 +16,7 @@ const leistungen = [
 function AnfrageForm() {
   const searchParams = useSearchParams();
   const produkt = searchParams.get("produkt") || "";
+  const cart = useCart();
 
   const [form, setForm] = useState({
     name: "",
@@ -21,7 +24,7 @@ function AnfrageForm() {
     telefon: "",
     von: "",
     bis: "",
-    nachricht: produkt ? `Anfrage zu: ${produkt}\n\n` : "",
+    nachricht: produkt && cart.items.length === 0 ? `Anfrage zu: ${produkt}\n\n` : "",
     leistungen: [] as string[],
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -46,7 +49,8 @@ function AnfrageForm() {
     if (!form.bis) errs.bis = "Enddatum ist erforderlich.";
     if (form.von && form.bis && form.von > form.bis)
       errs.bis = "Enddatum muss nach Startdatum liegen.";
-    if (!form.nachricht.trim()) errs.nachricht = "Nachricht ist erforderlich.";
+    if (!form.nachricht.trim() && cart.items.length === 0)
+      errs.nachricht = "Nachricht ist erforderlich.";
     return errs;
   }
 
@@ -61,10 +65,20 @@ function AnfrageForm() {
       const res = await fetch("/api/anfrage", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+          ...form,
+          produkte: cart.items.map((i) => ({
+            id: i.id,
+            name: i.name,
+            price: i.price,
+            unit: i.unit,
+            categoryLabel: i.categoryLabel,
+          })),
+        }),
       });
       if (res.ok) {
         setStatus("sent");
+        cart.clearCart();
       } else {
         setStatus("error");
       }
@@ -96,6 +110,64 @@ function AnfrageForm() {
 
   return (
     <form onSubmit={handleSubmit} noValidate className="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm">
+      {/* Selected Products */}
+      {cart.items.length > 0 && (
+        <>
+          <h2 className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-4">
+            Ausgewählte Artikel ({cart.items.length})
+          </h2>
+          <div className="space-y-2 mb-6">
+            {cart.items.map((item) => (
+              <div
+                key={item.id}
+                className="flex items-center justify-between gap-3 px-4 py-3 rounded-xl bg-gray-50 border border-gray-100"
+              >
+                <div className="min-w-0">
+                  <p className="text-sm font-semibold text-gray-900 truncate">{item.name}</p>
+                  <p className="text-xs text-gray-500">
+                    {item.categoryLabel} · {item.price} {item.unit}
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => cart.removeItem(item.id)}
+                  className="flex-shrink-0 w-7 h-7 flex items-center justify-center rounded-full text-gray-400 hover:bg-red-50 hover:text-red-500 transition-all"
+                >
+                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                    <line x1="4" y1="4" x2="12" y2="12" />
+                    <line x1="12" y1="4" x2="4" y2="12" />
+                  </svg>
+                </button>
+              </div>
+            ))}
+            <Link
+              href="/inventar"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-brand hover:underline mt-1"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg>
+              Weitere Artikel hinzufügen
+            </Link>
+          </div>
+        </>
+      )}
+
+      {cart.items.length === 0 && !produkt && (
+        <div className="mb-6 px-4 py-4 rounded-xl bg-brand/5 border border-brand/10 text-center">
+          <p className="text-sm text-gray-600 mb-2">
+            Noch keine Artikel ausgewählt.
+          </p>
+          <Link
+            href="/inventar"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand hover:underline"
+          >
+            Zum Inventar — Artikel auswählen
+          </Link>
+        </div>
+      )}
+
       {/* Zeitraum */}
       <h2 className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-4">Zeitraum</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-6">
@@ -205,7 +277,7 @@ function AnfrageForm() {
 
       <div className="mb-6">
         <label className="block text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2">
-          Nachricht *
+          Nachricht {cart.items.length === 0 ? "*" : "(optional)"}
         </label>
         <textarea
           rows={5}

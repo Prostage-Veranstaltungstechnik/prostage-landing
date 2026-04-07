@@ -12,6 +12,8 @@ export async function POST(request: Request) {
       );
     }
 
+    const produkte = Array.isArray(body.produkte) ? body.produkte : [];
+
     // Log the inquiry (replace with email sending later)
     console.log("=== Neue Anfrage ===");
     console.log("Name:", name);
@@ -19,7 +21,13 @@ export async function POST(request: Request) {
     console.log("Telefon:", body.telefon || "–");
     console.log("Zeitraum:", von, "bis", bis);
     console.log("Leistungen:", (body.leistungen || []).join(", ") || "Keine ausgewählt");
-    console.log("Nachricht:", nachricht);
+    if (produkte.length > 0) {
+      console.log("Ausgewählte Produkte:");
+      produkte.forEach((p: { name: string; price: string; unit: string; categoryLabel: string }) => {
+        console.log(`  - ${p.name} (${p.categoryLabel}) — ${p.price} ${p.unit}`);
+      });
+    }
+    console.log("Nachricht:", nachricht || "–");
     console.log("====================");
 
     return NextResponse.json({ success: true });
