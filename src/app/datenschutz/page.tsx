@@ -18,9 +18,9 @@ export default function DatenschutzPage() {
               1. Verantwortlicher
             </h2>
             <p>
-              ProStage GmbH (i.Gr.)
+              GbR Berst Jonas und Rittmann Leo
               <br />
-              [Adresse folgt]
+              Humboldtstraße 19 | 67655 Kaiserslautern
               <br />
               E-Mail:{" "}
               <a href="mailto:info@prostage.de" className="text-brand hover:underline">
