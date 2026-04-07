@@ -104,10 +104,10 @@ export default function Footer() {
                 info@prostage.de
               </a>
               <a href="tel:+491234567890" className="text-sm hover:text-brand-light transition-colors">
-                +49 123 456 7890
+                +49 1638653411
               </a>
-              <span className="text-sm">Musterstraße 42</span>
-              <span className="text-sm">12345 Berlin</span>
+              <span className="text-sm">Humboldtstraße 19</span>
+              <span className="text-sm">67655 Kaiserslautern</span>
             </div>
           </div>
         </div>

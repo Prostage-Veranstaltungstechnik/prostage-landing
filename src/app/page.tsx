@@ -234,7 +234,7 @@ export default function Home() {
               Jetzt anfragen
             </Link>
             <a
-              href="tel:+491234567890"
+              href="tel:+49 1638653411"
               className="inline-flex items-center gap-2 bg-white text-gray-700 border border-gray-200 px-8 py-3.5 rounded-xl text-base font-semibold hover:bg-gray-50 transition-all hover:-translate-y-0.5"
             >
               <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
