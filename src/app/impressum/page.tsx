@@ -18,9 +18,11 @@ export default function ImpressumPage() {
               Angaben gemäß § 5 TMG
             </h2>
             <p>
-              ProStage GmbH (i.Gr.)
+              Prostage Veranstaltungstechnik
+              GbR Berst Jonas und Rittmann Leo
               <br />
-              [Adresse folgt]
+              Humboldtstraße 19 | 67655 Kaiserslautern
+              tel: +49 1638653411
             </p>
           </div>
 
@@ -28,7 +30,7 @@ export default function ImpressumPage() {
             <h2 className="font-heading text-xl font-semibold text-gray-900 mb-3">
               Vertreten durch
             </h2>
-            <p>Geschäftsführer: [Name folgt]</p>
+            <p>Geschäftsführer: Jonas Berst & Leo Rittmann</p>
           </div>
 
           <div>
