@@ -325,7 +325,7 @@ function AnfrageForm() {
           info@prostage.de
         </a>{" "}
         · Telefon:{" "}
-        <a href="tel:+491234567890" className="text-brand hover:underline">
+        <a href="tel:+49 1638653411" className="text-brand hover:underline">
           +49 1638653411
         </a>
       </p>
