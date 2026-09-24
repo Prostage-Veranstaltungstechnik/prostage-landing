@@ -1,58 +1,76 @@
 # ProStage Deployment
 
-## Docker Build & Run
+Das Backend verwendet MySQL für Produkte und Anfragen. Das Schema wird beim
+ersten API-Aufruf automatisch angelegt und der Produktkatalog einmalig aus
+`src/data/products.json` befüllt.
+
+## Lokale Konfiguration
 
 ```bash
-docker build -t prostage .
-docker run -d \
-  -p 3000:3000 \
-  -v prostage-data:/data \
-  --name prostage \
-  prostage
+cp .env.example .env
 ```
 
-## Volume Mount
+In `.env` müssen mindestens MySQL-Zugang, `ADMIN_PASSWORD` und ein zufälliger
+`ADMIN_SESSION_SECRET` mit mindestens 32 Zeichen gesetzt werden. Für echten
+Mailversand werden zusätzlich die SMTP-Werte benötigt.
 
-Product data and images are stored outside the container in `/data/`:
-
-- `/data/products.json` — Product database
-- `/data/images/` — Uploaded product images
-
-On first startup, if `/data/products.json` doesn't exist, the app seeds it from the built-in `src/data/products.json`.
-
-### Named volume (recommended)
+## Docker Compose
 
 ```bash
-docker volume create prostage-data
-docker run -d -p 3000:3000 -v prostage-data:/data prostage
+docker compose up --build
 ```
 
-### Bind mount (for direct file access)
+Vorher die benötigten Werte in `.env` setzen. Compose startet:
 
-```bash
-mkdir -p ./data/images
-docker run -d -p 3000:3000 -v $(pwd)/data:/data prostage
-```
+- `app`: Next.js auf Port 3000
+- `mysql`: MySQL 8.4 mit persistentem Volume
+- ein separates Volume für hochgeladene Produktbilder
 
-## Dokploy
+## Wichtige Routen
 
-When deploying via Dokploy, add a persistent volume mount:
+- `/mieten` – öffentlicher Produktkatalog
+- `/anfrage` – Mietanfrage an `sales@prostage.de`
+- `/kontakt` – Kontaktanfrage an `info@prostage.de`
+- `/admin` – geschützte Produkt- und Anfrageverwaltung
 
-- **Source**: Named volume or host path (e.g., `/opt/prostage/data`)
-- **Target**: `/data`
+## Spamschutz
 
-## Environment Variables
+Kontakt- und Mietanfragen werden durch mehrere serverseitige Regeln geschützt:
 
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `DATA_PATH` | `/data` | Directory for products.json and images |
-| `PORT` | `3000` | Server port |
-| `NODE_ENV` | `production` | Node environment |
+- unsichtbares Honeypot-Feld und Mindest-Ausfüllzeit
+- Herkunftsprüfung gegen Cross-Site-POSTs
+- persistentes Rate-Limit in MySQL: 5 Versuche je IP in 15 Minuten
+- zusätzlich 3 Versuche je E-Mail-Adresse in 30 Minuten
+- identische Nachrichten werden 15 Minuten lang blockiert
+- Nachrichten mit mehr als vier Links werden abgewiesen
+
+IP-Adressen werden hierfür nicht im Klartext, sondern nur als Hash gespeichert.
+- `/api/health` – Status von Datenbank, Mail und Admin-Konfiguration
+
+## Umgebungsvariablen
+
+| Variable | Bedeutung |
+| --- | --- |
+| `DATABASE_URL` | Optionale vollständige MySQL-URL |
+| `MYSQL_HOST`, `MYSQL_PORT`, `MYSQL_DATABASE` | MySQL-Verbindung |
+| `MYSQL_USER`, `MYSQL_PASSWORD` | MySQL-Zugang |
+| `MYSQL_SSL` | `true` für TLS |
+| `ADMIN_PASSWORD` | Passwort für `/admin` |
+| `ADMIN_SESSION_SECRET` | Signaturschlüssel, mindestens 32 Zeichen |
+| `SMTP_HOST`, `SMTP_PORT`, `SMTP_SECURE` | SMTP-Server |
+| `SMTP_USER`, `SMTP_PASSWORD` | SMTP-Zugang |
+| `MAIL_FROM` | Absender der Website-Mails |
+| `SALES_EMAIL` | Ziel für Mietanfragen |
+| `INFO_EMAIL` | Ziel für Kontaktanfragen |
+| `DATA_PATH` | Persistenter Ordner für Produktbilder |
+
+Wenn SMTP nicht konfiguriert ist, werden Anfragen weiterhin sicher in MySQL
+gespeichert und im Adminbereich als „Nur gespeichert“ angezeigt.
 
 ## Backup
 
-To backup product data:
-
 ```bash
-docker cp prostage:/data ./backup
+docker compose exec mysql mysqldump -u root -p prostage > prostage-backup.sql
 ```
+
+Zusätzlich sollte das Volume `prostage-images` regelmäßig gesichert werden.

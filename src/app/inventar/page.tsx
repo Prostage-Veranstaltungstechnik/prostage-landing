@@ -5,6 +5,7 @@ import Link from "next/link";
 import type { Product } from "@/types/product";
 import { CATEGORY_OPTIONS } from "@/types/product";
 import { useCart } from "@/hooks/useCart";
+import seedProducts from "@/data/products.json";
 
 const categories = [
   { key: "all", label: "Alle" },
@@ -18,14 +19,14 @@ function ProductImage({ product, className }: { product: Product; className?: st
       <img
         src={product.image}
         alt={product.name}
-        className={`w-full h-full object-cover ${className || ""}`}
+        className={`h-full w-full bg-white object-contain p-6 ${className || ""}`}
       />
     );
   }
   return (
     <div className={`w-full h-full bg-gradient-to-br from-gray-100 to-gray-50 flex items-center justify-center ${className || ""}`}>
       <div className="text-brand/20 font-heading text-4xl font-bold">
-        {product.categoryLabel.slice(0, 2).toUpperCase()}
+        {product.isSet ? "SET" : product.categoryLabel.slice(0, 2).toUpperCase()}
       </div>
     </div>
   );
@@ -34,7 +35,7 @@ function ProductImage({ product, className }: { product: Product; className?: st
 function ProductModal({ product, onClose, cart }: { product: Product; onClose: () => void; cart: ReturnType<typeof useCart> }) {
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4"
+      className="fixed inset-0 z-[60] flex items-center justify-center p-4"
       onClick={onClose}
     >
       <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
@@ -76,11 +77,27 @@ function ProductModal({ product, onClose, cart }: { product: Product; onClose: (
             {product.description}
           </p>
 
+          {product.isSet && product.setItems.length > 0 && (
+            <div className="mb-5 rounded-xl border border-brand/10 bg-brand/5 p-4">
+              <h3 className="text-xs font-semibold uppercase tracking-wider text-brand mb-3">Im Set enthalten</h3>
+              <ul className="space-y-2">
+                {product.setItems.map((item) => (
+                  <li key={item.productId} className="flex items-center justify-between gap-4 text-sm">
+                    <span className="text-gray-700">{item.productName}</span>
+                    <span className="font-semibold text-gray-900">{item.quantity}×</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
           <div className="flex items-baseline gap-2 mb-5">
             <span className="font-heading text-2xl font-bold text-brand">
               {product.price}
             </span>
-            <span className="text-sm text-gray-400">{product.unit}</span>
+            {product.price !== "Auf Anfrage" && (
+              <span className="text-sm text-gray-400">{product.unit}</span>
+            )}
             {product.availability && (
               <span
                 className={`ml-auto text-xs font-semibold px-2.5 py-1 rounded-full ${
@@ -159,7 +176,7 @@ export default function InventarPage() {
   const cart = useCart();
 
   useEffect(() => {
-    fetch("/api/admin/products")
+    fetch("/api/products")
       .then((res) => res.json())
       .then((data) => {
         const sorted = (data as Product[]).sort(
@@ -167,7 +184,13 @@ export default function InventarPage() {
         );
         setProducts(sorted);
       })
-      .catch(() => {})
+      .catch(() => {
+        setProducts(
+          (seedProducts as unknown as Product[]).sort(
+            (a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0)
+          )
+        );
+      })
       .finally(() => setLoading(false));
   }, []);
 
@@ -184,20 +207,20 @@ export default function InventarPage() {
   return (
     <>
       {/* HERO */}
-      <section className="pt-32 pb-12 text-center bg-gradient-to-b from-gray-50 to-white">
+      <section className="pt-14 pb-10 text-center bg-gradient-to-b from-gray-50 to-white sm:pt-16 sm:pb-12">
         <h1 className="font-heading text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4">
           Equipment <span className="text-brand">mieten</span>
         </h1>
         <p className="text-gray-500 text-lg max-w-xl mx-auto leading-relaxed px-6">
-          Professionelle Veranstaltungstechnik — von Line Arrays bis LED Walls.
-          Faire Preise, top Zustand, schneller Service.
+          Wähle passende Veranstaltungstechnik aus und sende uns deine
+          unverbindliche Mietanfrage gesammelt zu.
         </p>
       </section>
 
       {/* FILTERS */}
       <section className="max-w-7xl mx-auto px-6 pb-4">
         <div className="mb-5">
-          <div className="relative inline-block">
+          <div className="relative block w-full sm:w-80">
             <svg
               className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"
               width="16"
@@ -216,7 +239,7 @@ export default function InventarPage() {
               placeholder="Equipment suchen…"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full max-w-sm pl-10 pr-4 py-2.5 rounded-xl border border-gray-200 bg-white text-gray-900 text-sm focus:outline-none focus:border-brand/40 focus:ring-2 focus:ring-brand/10 transition-all"
+              className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-200 bg-white text-gray-900 text-sm focus:outline-none focus:border-brand/40 focus:ring-2 focus:ring-brand/10 transition-all"
             />
           </div>
         </div>
@@ -250,7 +273,7 @@ export default function InventarPage() {
             {filtered.map((product) => (
               <div
                 key={product.id}
-                className="group bg-white border border-gray-200 rounded-2xl overflow-hidden hover:border-brand/30 hover:shadow-lg hover:shadow-brand/5 transition-all duration-300 hover:-translate-y-1"
+                className="group flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:shadow-lg hover:shadow-brand/5"
               >
                 <div className="relative w-full aspect-[16/10] overflow-hidden">
                   <ProductImage product={product} />
@@ -262,22 +285,32 @@ export default function InventarPage() {
                       Featured
                     </div>
                   )}
+                  {product.isSet && (
+                    <div className="absolute top-3 right-3 rounded-full bg-slate-900 px-2.5 py-1 text-xs font-semibold text-white shadow-sm">
+                      Produkt-Set
+                    </div>
+                  )}
                 </div>
-                <div className="p-5">
+                <div className="flex flex-1 flex-col p-5">
                   <p className="text-xs font-semibold uppercase tracking-wider text-brand mb-1">
                     {product.categoryLabel}
                   </p>
                   <h3 className="font-heading text-base font-semibold text-gray-900 mb-1.5">
                     {product.name}
                   </h3>
-                  <p className="text-gray-500 text-sm leading-relaxed mb-4">
+                  {product.isSet && product.setItems.length > 0 && (
+                    <p className="mb-2 text-xs font-medium text-brand">
+                      {product.setItems.reduce((sum, item) => sum + item.quantity, 0)} Teile im Set
+                    </p>
+                  )}
+                  <p className="mb-4 line-clamp-3 min-h-[4.5rem] text-sm leading-relaxed text-gray-500">
                     {product.description}
                   </p>
-                  <div className="font-heading text-2xl font-bold text-brand mb-4">
+                  <div className="mt-auto mb-4 font-heading text-2xl font-bold text-brand">
                     {product.price}{" "}
-                    <span className="text-sm font-normal text-gray-400">
-                      {product.unit}
-                    </span>
+                    {product.price !== "Auf Anfrage" && (
+                      <span className="text-sm font-normal text-gray-400">{product.unit}</span>
+                    )}
                   </div>
                   <div className="flex gap-2">
                     <button

@@ -2,246 +2,155 @@ import Link from "next/link";
 
 const services = [
   {
-    title: "FullService Events",
-    description:
-      "Firmenevents, Partys, Bandauftritte — wir liefern das komplette technische Setup aus einer Hand, von der Planung bis zum Abbau.",
-    icon: (
-      <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
-        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-      </svg>
-    ),
-  },
-  {
+    number: "01",
     title: "Tontechnik",
-    description:
-      "Kristallklarer Sound für jede Venue-Größe. Line-Arrays, Monitorsysteme und digitale Mischpulte der neuesten Generation.",
-    icon: (
-      <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
-        <circle cx="12" cy="12" r="4" />
-        <path d="M1 12h3m14 0h3M12 1v3m0 14v3M4.2 4.2l2.1 2.1m11.4 11.4l2.1 2.1M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" />
-      </svg>
-    ),
+    copy: "Klarer, druckvoller Sound – passend dimensioniert für Raum, Publikum und Programm.",
   },
   {
+    number: "02",
     title: "Lichttechnik",
-    description:
-      "Atmosphärische Lichtdesigns mit Moving Heads, LED-Bars, Followspots und intelligenten Steuerungen für jede Stimmung.",
-    icon: (
-      <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
-        <rect x="3" y="8" width="18" height="12" rx="2" />
-        <path d="M7 8V6a5 5 0 0110 0v2" />
-      </svg>
-    ),
+    copy: "Lichtkonzepte, die Atmosphäre schaffen und Marken, Bühnen sowie Menschen sichtbar machen.",
   },
   {
-    title: "Vermietung",
-    description:
-      "Professionelle Veranstaltungstechnik flexibel mieten — tageweise zum Festpreis, top Zustand, schneller Service.",
-    icon: (
-      <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
-        <path d="M12 20V10m6 10V4M6 20v-4" />
-      </svg>
-    ),
+    number: "03",
+    title: "Full Service",
+    copy: "Planung, Technik, Betreuung und Abbau aus einer Hand – mit einem festen Ansprechpartner.",
   },
 ];
 
-const features = [
-  "Eigener Gerätepark auf neuestem Stand",
-  "Flexibel und zuverlässig",
-  "Persönliche Betreuung von der Planung bis zum Abbau",
-  "Sorgfältige Planung & saubere technische Umsetzung",
+const process = [
+  ["Anfrage", "Du beschreibst uns dein Event oder stellst dein Wunsch-Equipment zusammen."],
+  ["Planung", "Wir prüfen Verfügbarkeit, Dimensionierung und alle technischen Anforderungen."],
+  ["Umsetzung", "Pünktliche Bereitstellung, sauberer Aufbau und verlässliche Betreuung."],
 ];
 
 export default function Home() {
   return (
     <>
-      {/* HERO */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-50 via-white to-blue-50">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-brand/5 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 left-0 w-[600px] h-[400px] bg-brand/3 rounded-full blur-3xl" />
-        </div>
-
-        <div className="relative z-10 text-center max-w-4xl px-6 py-32">
-          <div className="inline-flex items-center gap-2 bg-brand/5 border border-brand/15 rounded-full px-4 py-1.5 text-sm font-medium text-brand mb-8">
-            <span className="w-1.5 h-1.5 bg-brand rounded-full animate-pulse" />
-            Veranstaltungstechnik auf höchstem Niveau
+      <section className="relative overflow-hidden bg-[#f7f9fc] pb-20 pt-16 sm:pb-28 sm:pt-20">
+        <div className="absolute inset-0 opacity-60 [background-image:linear-gradient(rgba(15,23,42,.04)_1px,transparent_1px),linear-gradient(90deg,rgba(15,23,42,.04)_1px,transparent_1px)] [background-size:48px_48px]" />
+        <div className="page-shell relative grid items-center gap-14 lg:grid-cols-[1.05fr_.95fr]">
+          <div>
+            <div className="eyebrow">Veranstaltungstechnik aus Kaiserslautern</div>
+            <h1 className="font-heading text-5xl font-bold leading-[.96] tracking-[-0.055em] text-slate-950 sm:text-6xl lg:text-7xl xl:text-[5.6rem]">
+              Technik, die den <span className="text-brand">Moment</span> trägt.
+            </h1>
+            <p className="mt-7 max-w-xl text-lg leading-8 text-slate-600">
+              Ton, Licht und Full-Service für Veranstaltungen, die professionell aussehen, stark klingen und reibungslos laufen.
+            </p>
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+              <Link href="/mieten" className="primary-button">Equipment mieten <span aria-hidden="true">→</span></Link>
+              <Link href="/kontakt" className="secondary-button">Event besprechen</Link>
+            </div>
+            <div className="mt-10 flex flex-wrap gap-x-7 gap-y-3 text-sm font-semibold text-slate-500">
+              <span className="flex items-center gap-2"><i className="h-2 w-2 rounded-full bg-emerald-500" /> Persönliche Beratung</span>
+              <span className="flex items-center gap-2"><i className="h-2 w-2 rounded-full bg-emerald-500" /> Flexibel planbar</span>
+              <span className="flex items-center gap-2"><i className="h-2 w-2 rounded-full bg-emerald-500" /> Gepflegter Gerätepark</span>
+            </div>
           </div>
 
-          <h1 className="font-heading text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-gray-900 mb-6 leading-[1.05]">
-            Wir machen dein Event{" "}
-            <span className="text-brand">unvergesslich</span>
-          </h1>
-
-          <p className="text-lg sm:text-xl text-gray-500 max-w-2xl mx-auto mb-10 leading-relaxed">
-            Modernste Ton-, Licht- und Bühnentechnik für Events, die
-            begeistern. Von der Konzeption bis zur Durchführung — alles aus
-            einer Hand.
-          </p>
-
-          <div className="flex gap-4 justify-center flex-wrap">
-            <Link
-              href="/anfrage"
-              className="inline-flex items-center gap-2 bg-brand text-white px-8 py-3.5 rounded-xl text-base font-semibold hover:bg-brand-dark transition-all shadow-lg shadow-brand/25 hover:shadow-xl hover:shadow-brand/30 hover:-translate-y-0.5"
-            >
-              <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                <polyline points="22,6 12,13 2,6" />
-              </svg>
-              Jetzt anfragen
-            </Link>
-            <Link
-              href="/#leistungen"
-              className="inline-flex items-center gap-2 bg-gray-100 text-gray-700 px-8 py-3.5 rounded-xl text-base font-semibold hover:bg-gray-200 transition-all hover:-translate-y-0.5"
-            >
-              Unsere Leistungen
-            </Link>
+          <div className="relative mx-auto aspect-[4/5] w-full max-w-[540px]">
+            <div className="absolute inset-6 rounded-[2.5rem] bg-[#07111f] shadow-2xl shadow-slate-900/20" />
+            <div className="absolute inset-x-0 top-[14%] h-48 rounded-full bg-brand/30 blur-3xl" />
+            <div className="absolute inset-6 overflow-hidden rounded-[2.5rem]">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(0,119,255,.6),transparent_28%),linear-gradient(180deg,#0b1c34_0%,#050b14_100%)]" />
+              <div className="absolute left-[12%] right-[12%] top-[24%] h-px bg-white/30" />
+              <div className="absolute left-[20%] top-[15%] h-[55%] w-px rotate-[18deg] bg-gradient-to-b from-white/70 to-transparent shadow-[0_0_22px_8px_rgba(86,173,255,.3)]" />
+              <div className="absolute right-[20%] top-[15%] h-[55%] w-px -rotate-[18deg] bg-gradient-to-b from-white/70 to-transparent shadow-[0_0_22px_8px_rgba(86,173,255,.3)]" />
+              <div className="absolute bottom-[16%] left-[10%] right-[10%] h-[34%] rounded-t-[45%] border-t border-brand/70 bg-brand/10 shadow-[0_-20px_80px_rgba(0,119,255,.24)]" />
+              <div className="absolute bottom-[21%] left-[24%] h-24 w-9 rounded-t-full bg-black/70" />
+              <div className="absolute bottom-[21%] left-[47%] h-32 w-10 rounded-t-full bg-black/80" />
+              <div className="absolute bottom-[21%] right-[22%] h-20 w-8 rounded-t-full bg-black/70" />
+              <div className="absolute bottom-8 left-8 right-8 flex items-end justify-between">
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-[.22em] text-brand-light">Sound · Light · Stage</p>
+                  <p className="mt-2 max-w-[260px] font-heading text-2xl font-semibold leading-tight text-white">Dein Event. Unsere Bühne.</p>
+                </div>
+                <span className="grid h-12 w-12 place-items-center rounded-full border border-white/20 bg-white/10 text-white">↗</span>
+              </div>
+            </div>
+            <div className="float-slow absolute -bottom-2 -left-4 rounded-2xl border border-slate-200 bg-white p-4 shadow-xl sm:-left-10">
+              <p className="text-[10px] font-bold uppercase tracking-[.18em] text-slate-400">Alles aus einer Hand</p>
+              <p className="mt-1 font-heading text-lg font-bold text-slate-950">Planung bis Abbau</p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* LEISTUNGEN */}
-      <section id="leistungen" className="py-24 sm:py-32 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="max-w-2xl">
-            <p className="text-sm font-semibold uppercase tracking-widest text-brand mb-3">
-              — Was wir bieten
-            </p>
-            <h2 className="font-heading text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              Unsere Leistungen
-            </h2>
-            <p className="text-gray-500 text-lg leading-relaxed">
-              Wir liefern das komplette Spektrum professioneller
-              Veranstaltungstechnik — von der kleinen Konferenz bis zur großen
-              Bühnenshow.
+      <section className="py-20 sm:py-28">
+        <div className="page-shell">
+          <div className="grid gap-8 lg:grid-cols-[.7fr_1.3fr] lg:gap-20">
+            <div>
+              <div className="eyebrow">Was wir möglich machen</div>
+              <h2 className="display-title">Ein Setup, das zu deinem Event passt.</h2>
+            </div>
+            <div className="grid border-t border-slate-200 sm:grid-cols-3 lg:border-l lg:border-t-0">
+              {services.map((service) => (
+                <article key={service.number} className="border-b border-slate-200 py-7 sm:border-r sm:px-6 lg:py-3">
+                  <span className="font-mono text-xs text-brand">{service.number}</span>
+                  <h3 className="mt-8 font-heading text-xl font-bold text-slate-950">{service.title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-slate-600">{service.copy}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#07111f] py-20 text-white sm:py-28">
+        <div className="page-shell">
+          <div className="grid gap-12 lg:grid-cols-2 lg:items-end">
+            <div>
+              <div className="eyebrow !text-brand-light">Equipment mieten</div>
+              <h2 className="font-heading text-4xl font-bold tracking-[-.04em] sm:text-5xl">Profi-Equipment. Einfach ausgewählt.</h2>
+            </div>
+            <p className="max-w-xl text-lg leading-8 text-slate-400 lg:justify-self-end">
+              Durchsuche unser Sortiment, wähle passende Artikel aus und sende uns deine Mietanfrage direkt online.
             </p>
           </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-14">
-            {services.map((service) => (
-              <div
-                key={service.title}
-                className="group bg-gray-50 hover:bg-white border border-gray-100 hover:border-brand/20 rounded-2xl p-8 transition-all duration-300 hover:shadow-lg hover:shadow-brand/5 hover:-translate-y-1"
-              >
-                <div className="w-12 h-12 rounded-xl bg-brand/10 flex items-center justify-center text-brand mb-5">
-                  {service.icon}
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {["Tontechnik", "Lichttechnik", "SFX", "Netzwerktechnik", "Bühne & Kabel"].map((category, index) => (
+              <Link key={category} href="/mieten" className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[.04] p-7 transition hover:-translate-y-1 hover:border-brand/60 hover:bg-brand/10">
+                <span className="font-mono text-xs text-slate-500">0{index + 1}</span>
+                <div className="mt-16 flex items-end justify-between">
+                  <h3 className="min-w-0 font-heading text-xl font-semibold leading-tight sm:text-2xl">{category}</h3>
+                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white/10 transition group-hover:bg-brand">→</span>
                 </div>
-                <h3 className="font-heading text-lg font-semibold text-gray-900 mb-2">
-                  {service.title}
-                </h3>
-                <p className="text-gray-500 text-sm leading-relaxed">
-                  {service.description}
-                </p>
-              </div>
+              </Link>
+            ))}
+          </div>
+          <Link href="/mieten" className="primary-button mt-9">Zum gesamten Equipment <span aria-hidden="true">→</span></Link>
+        </div>
+      </section>
+
+      <section className="py-20 sm:py-28">
+        <div className="page-shell">
+          <div className="max-w-2xl">
+            <div className="eyebrow">So läuft es</div>
+            <h2 className="display-title">Vom ersten Klick zum fertigen Setup.</h2>
+          </div>
+          <div className="mt-12 grid gap-5 md:grid-cols-3">
+            {process.map(([title, copy], index) => (
+              <article key={title} className="rounded-3xl border border-slate-200 bg-slate-50 p-7">
+                <span className="grid h-10 w-10 place-items-center rounded-full bg-white font-mono text-xs font-bold text-brand shadow-sm">{index + 1}</span>
+                <h3 className="mt-8 font-heading text-xl font-bold text-slate-950">{title}</h3>
+                <p className="mt-3 text-sm leading-6 text-slate-600">{copy}</p>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* EQUIPMENT CTA */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <p className="text-sm font-semibold uppercase tracking-widest text-brand mb-3">
-            — Equipment mieten
-          </p>
-          <h2 className="font-heading text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-            Professionelle Veranstaltungstechnik
-          </h2>
-          <p className="text-gray-500 text-lg max-w-xl mx-auto mb-10 leading-relaxed">
-            Tontechnik, Lichttechnik, Bühnentechnik und mehr — flexibel mieten,
-            tageweise zum Festpreis.
-          </p>
-          <Link
-            href="/inventar"
-            className="inline-flex items-center gap-3 bg-brand text-white px-10 py-4 rounded-full text-lg font-bold hover:bg-brand-dark transition-all shadow-lg shadow-brand/25 hover:shadow-xl hover:shadow-brand/30 hover:-translate-y-0.5"
-          >
-            Unser Equipment entdecken
-            <span className="text-xl">&rarr;</span>
-          </Link>
-        </div>
-      </section>
-
-      {/* ÜBER UNS */}
-      <section id="ueber" className="py-24 sm:py-32 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-widest text-brand mb-3">
-                — Wer wir sind
-              </p>
-              <h2 className="font-heading text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
-                Technik ist unsere Leidenschaft
-              </h2>
-              <p className="text-gray-500 text-base leading-relaxed mb-8">
-                Mit gebündelter Expertise in Licht und Ton realisieren wir Ihre
-                Events – persönlich, zuverlässig und auf höchstem technischem
-                Niveau. Vom intimen Firmenevent bis zur großen Party verbinden
-                wir kreativen Anspruch mit moderner Technik, damit Ihre
-                Veranstaltung in Erinnerung bleibt.
-              </p>
-              <div className="flex flex-col gap-3">
-                {features.map((f) => (
-                  <div key={f} className="flex items-center gap-3">
-                    <div className="w-7 h-7 rounded-lg bg-brand/10 flex items-center justify-center text-brand text-sm flex-shrink-0">
-                      &#10003;
-                    </div>
-                    <span className="text-gray-700 font-medium text-sm">
-                      {f}
-                    </span>
-                  </div>
-                ))}
-              </div>
+      <section className="pb-20 sm:pb-28">
+        <div className="page-shell">
+          <div className="relative overflow-hidden rounded-[2rem] bg-brand px-7 py-12 text-white sm:px-12 sm:py-16">
+            <div className="absolute -right-16 -top-24 h-72 w-72 rounded-full border-[50px] border-white/10" />
+            <div className="relative max-w-3xl">
+              <p className="text-xs font-bold uppercase tracking-[.22em] text-blue-100">Projekt im Kopf?</p>
+              <h2 className="mt-4 font-heading text-4xl font-bold tracking-[-.04em] sm:text-5xl">Lass uns darüber sprechen.</h2>
+              <p className="mt-5 max-w-2xl text-lg leading-8 text-blue-100">Wir hören zu, denken mit und planen die Technik so, dass sie am Veranstaltungstag einfach funktioniert.</p>
+              <Link href="/kontakt" className="mt-8 inline-flex rounded-full bg-white px-6 py-3.5 text-sm font-bold text-brand transition hover:-translate-y-0.5">Kontakt aufnehmen →</Link>
             </div>
-
-            <div className="relative aspect-square rounded-3xl bg-gradient-to-br from-gray-100 to-gray-50 border border-gray-200 flex items-center justify-center overflow-hidden">
-              <div className="absolute w-[60%] h-[60%] rounded-full border border-brand/10 animate-[spin_20s_linear_infinite]" />
-              <div className="absolute w-[80%] h-[80%] rounded-full border border-brand/10 animate-[spin_30s_linear_infinite_reverse]" />
-              <div className="absolute w-[95%] h-[95%] rounded-full border border-brand/5 animate-[spin_40s_linear_infinite]" />
-              <div className="relative z-10 text-center">
-                <div className="font-heading text-6xl font-extrabold bg-gradient-to-br from-brand to-brand-light bg-clip-text text-transparent">
-                  PS
-                </div>
-                <p className="text-gray-400 text-sm mt-1">Pro &middot; Stage</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-24 sm:py-32 bg-gray-50 relative overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-brand/5 rounded-full blur-3xl pointer-events-none" />
-        <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
-          <p className="text-sm font-semibold uppercase tracking-widest text-brand mb-3">
-            — Bereit für dein Event?
-          </p>
-          <h2 className="font-heading text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-            Lass uns gemeinsam etwas Großes schaffen
-          </h2>
-          <p className="text-gray-500 text-lg max-w-xl mx-auto mb-10 leading-relaxed">
-            Erzähl uns von deinem Projekt — wir erstellen dir ein
-            maßgeschneidertes Angebot. Unverbindlich und kostenfrei.
-          </p>
-          <div className="flex gap-4 justify-center flex-wrap">
-            <Link
-              href="/anfrage"
-              className="inline-flex items-center gap-2 bg-brand text-white px-8 py-3.5 rounded-xl text-base font-semibold hover:bg-brand-dark transition-all shadow-lg shadow-brand/25 hover:shadow-xl hover:shadow-brand/30 hover:-translate-y-0.5"
-            >
-              <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                <polyline points="22,6 12,13 2,6" />
-              </svg>
-              Jetzt anfragen
-            </Link>
-            <a
-              href="tel: +49 1638653411"
-              className="inline-flex items-center gap-2 bg-white text-gray-700 border border-gray-200 px-8 py-3.5 rounded-xl text-base font-semibold hover:bg-gray-50 transition-all hover:-translate-y-0.5"
-            >
-              <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
-              </svg>
-              Anrufen
-            </a>
           </div>
         </div>
       </section>

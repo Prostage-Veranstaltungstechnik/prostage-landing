@@ -1,67 +1,43 @@
 import { NextResponse } from "next/server";
-import { readProducts, writeProducts, generateId } from "@/lib/products";
-import type { Product } from "@/types/product";
-import { CATEGORY_LABELS } from "@/types/product";
+import { isAdminAuthenticated } from "@/lib/auth";
+import { createProduct, readProducts } from "@/lib/products";
+import { CATEGORY_OPTIONS } from "@/types/product";
+
+function unauthorized() {
+  return NextResponse.json({ error: "Nicht autorisiert." }, { status: 401 });
+}
 
 export async function GET() {
+  if (!(await isAdminAuthenticated())) return unauthorized();
   try {
-    const products = await readProducts();
-    return NextResponse.json(products);
-  } catch {
-    return NextResponse.json(
-      { error: "Fehler beim Laden der Produkte." },
-      { status: 500 }
-    );
+    return NextResponse.json(await readProducts({ includeHidden: true }));
+  } catch (error) {
+    console.error("Admin products GET failed", error);
+    return NextResponse.json({ error: "Fehler beim Laden der Produkte." }, { status: 500 });
   }
 }
 
 export async function POST(request: Request) {
+  if (!(await isAdminAuthenticated())) return unauthorized();
   try {
     const body = await request.json();
-    const { name, category, description, price, unit, availability, featured, specs, image } = body;
-
-    if (!name || !category || !description) {
+    const validCategory = CATEGORY_OPTIONS.some((category) => category.key === body.category);
+    if (!body.name?.trim() || !validCategory || !body.description?.trim()) {
       return NextResponse.json(
         { error: "Name, Kategorie und Beschreibung sind erforderlich." },
         { status: 400 }
       );
     }
-
-    const products = await readProducts();
-
-    let id = generateId(name);
-    if (products.some((p: Product) => p.id === id)) {
-      id = `${id}-${Date.now()}`;
+    body.isSet = Boolean(body.isSet);
+    body.visible = body.visible !== false;
+    body.setItems = body.isSet && Array.isArray(body.setItems) ? body.setItems : [];
+    if (body.isSet && body.setItems.length === 0) {
+      return NextResponse.json({ error: "Ein Set muss mindestens ein Produkt enthalten." }, { status: 400 });
     }
-
-    const maxOrder = products.reduce(
-      (max, p) => Math.max(max, p.sortOrder ?? 0),
-      -1
-    );
-
-    const newProduct: Product = {
-      id,
-      name,
-      category,
-      categoryLabel: CATEGORY_LABELS[category] || category,
-      description,
-      price: price || "Auf Anfrage",
-      unit: unit || "/Tag",
-      specs: specs || {},
-      availability: availability || "Verfügbar",
-      featured: featured ?? false,
-      sortOrder: maxOrder + 1,
-      image: image || null,
-    };
-
-    products.push(newProduct);
-    await writeProducts(products);
-
-    return NextResponse.json(newProduct, { status: 201 });
-  } catch {
-    return NextResponse.json(
-      { error: "Fehler beim Erstellen des Produkts." },
-      { status: 500 }
-    );
+    const product = await createProduct(body);
+    return NextResponse.json(product, { status: 201 });
+  } catch (error) {
+    console.error("Admin product POST failed", error);
+    return NextResponse.json({ error: "Fehler beim Erstellen des Produkts." }, { status: 500 });
   }
 }

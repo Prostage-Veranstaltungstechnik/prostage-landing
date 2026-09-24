@@ -2,6 +2,8 @@
 
 import { useState, useEffect, useCallback, useRef, type FormEvent, type ChangeEvent } from "react";
 import type { Product } from "@/types/product";
+import type { Inquiry, InquiryStatus } from "@/types/inquiry";
+import type { ReferenceEntry, ReferenceInput } from "@/types/reference";
 import {
   CATEGORY_OPTIONS,
   CATEGORY_LABELS,
@@ -189,8 +191,11 @@ interface ProductFormData {
   unit: string;
   availability: string;
   featured: boolean;
+  visible: boolean;
   specs: Record<string, string>;
   image: string | null;
+  isSet: boolean;
+  setItems: Product["setItems"];
 }
 
 const emptyForm: ProductFormData = {
@@ -201,8 +206,11 @@ const emptyForm: ProductFormData = {
   unit: "/Tag",
   availability: "Verfügbar",
   featured: false,
+  visible: true,
   specs: {},
   image: null,
+  isSet: false,
+  setItems: [],
 };
 
 function ProductForm({
@@ -212,6 +220,7 @@ function ProductForm({
   title,
   submitLabel,
   productId,
+  availableProducts,
 }: {
   initial: ProductFormData;
   onSubmit: (data: ProductFormData) => Promise<void>;
@@ -219,6 +228,7 @@ function ProductForm({
   title: string;
   submitLabel: string;
   productId?: string;
+  availableProducts: Product[];
 }) {
   const [form, setForm] = useState<ProductFormData>(initial);
   const [error, setError] = useState("");
@@ -281,6 +291,10 @@ function ProductForm({
       setError("Name und Beschreibung sind erforderlich.");
       return;
     }
+    if (form.isSet && form.setItems.length === 0) {
+      setError("Bitte mindestens ein Produkt zum Set hinzufügen.");
+      return;
+    }
 
     setSaving(true);
     try {
@@ -319,6 +333,27 @@ function ProductForm({
         </div>
 
         <form onSubmit={handleSubmit} className="p-6 space-y-5">
+          <div className="grid grid-cols-2 gap-2 rounded-xl bg-gray-100 p-1">
+            <button
+              type="button"
+              onClick={() => update({ isSet: false, setItems: [] })}
+              className={`rounded-lg px-4 py-2.5 text-sm font-semibold transition-all ${
+                !form.isSet ? "bg-white text-gray-900 shadow-sm" : "text-gray-500"
+              }`}
+            >
+              Einzelprodukt
+            </button>
+            <button
+              type="button"
+              onClick={() => update({ isSet: true })}
+              className={`rounded-lg px-4 py-2.5 text-sm font-semibold transition-all ${
+                form.isSet ? "bg-white text-brand shadow-sm" : "text-gray-500"
+              }`}
+            >
+              Produkt-Set
+            </button>
+          </div>
+
           {/* Row: Name + Category */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
@@ -410,21 +445,34 @@ function ProductForm({
           </div>
 
           {/* Featured */}
-          <label className="flex items-center gap-3 cursor-pointer select-none">
-            <div className="relative">
-              <input
-                type="checkbox"
-                checked={form.featured}
-                onChange={(e) => update({ featured: e.target.checked })}
-                className="sr-only peer"
-              />
-              <div className="w-10 h-6 rounded-full bg-gray-200 peer-checked:bg-brand transition-colors" />
-              <div className="absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white shadow-sm transition-transform peer-checked:translate-x-4" />
-            </div>
-            <span className="text-sm font-medium text-gray-700">
-              Als Featured markieren
-            </span>
-          </label>
+          <div className="grid gap-4 sm:grid-cols-2">
+            <label className="flex items-center gap-3 cursor-pointer select-none">
+              <div className="relative">
+                <input
+                  type="checkbox"
+                  checked={form.visible}
+                  onChange={(e) => update({ visible: e.target.checked })}
+                  className="sr-only peer"
+                />
+                <div className="w-10 h-6 rounded-full bg-gray-200 peer-checked:bg-emerald-500 transition-colors" />
+                <div className="absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white shadow-sm transition-transform peer-checked:translate-x-4" />
+              </div>
+              <span className="text-sm font-medium text-gray-700">Öffentlich sichtbar</span>
+            </label>
+            <label className="flex items-center gap-3 cursor-pointer select-none">
+              <div className="relative">
+                <input
+                  type="checkbox"
+                  checked={form.featured}
+                  onChange={(e) => update({ featured: e.target.checked })}
+                  className="sr-only peer"
+                />
+                <div className="w-10 h-6 rounded-full bg-gray-200 peer-checked:bg-brand transition-colors" />
+                <div className="absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white shadow-sm transition-transform peer-checked:translate-x-4" />
+              </div>
+              <span className="text-sm font-medium text-gray-700">Als Featured markieren</span>
+            </label>
+          </div>
 
           {/* Image Upload */}
           <div>
@@ -476,6 +524,59 @@ function ProductForm({
             )}
           </div>
 
+          {form.isSet && (
+            <div className="rounded-2xl border border-brand/20 bg-brand/5 p-4">
+              <div className="mb-3">
+                <p className="text-xs font-semibold uppercase tracking-wider text-brand">Set zusammenstellen</p>
+                <p className="mt-1 text-xs text-gray-500">Wähle Einzelprodukte und die enthaltene Menge.</p>
+              </div>
+              <div className="max-h-64 space-y-2 overflow-y-auto pr-1">
+                {availableProducts
+                  .filter((product) => !product.isSet && product.id !== productId)
+                  .map((product) => {
+                    const selected = form.setItems.find((item) => item.productId === product.id);
+                    return (
+                      <div key={product.id} className="flex items-center gap-3 rounded-xl border border-gray-200 bg-white px-3 py-2.5">
+                        <input
+                          type="checkbox"
+                          checked={Boolean(selected)}
+                          onChange={(event) => update({
+                            setItems: event.target.checked
+                              ? [...form.setItems, { productId: product.id, quantity: 1, productName: product.name }]
+                              : form.setItems.filter((item) => item.productId !== product.id),
+                          })}
+                          className="h-4 w-4 accent-brand"
+                        />
+                        <span className="min-w-0 flex-1 truncate text-sm font-medium text-gray-700">{product.name}</span>
+                        {selected && (
+                          <label className="flex items-center gap-2 text-xs text-gray-500">
+                            Menge
+                            <input
+                              type="number"
+                              min={1}
+                              max={999}
+                              value={selected.quantity}
+                              onChange={(event) => update({
+                                setItems: form.setItems.map((item) =>
+                                  item.productId === product.id
+                                    ? { ...item, quantity: Math.max(1, Number(event.target.value) || 1) }
+                                    : item
+                                ),
+                              })}
+                              className="w-16 rounded-lg border border-gray-200 px-2 py-1.5 text-center text-sm"
+                            />
+                          </label>
+                        )}
+                      </div>
+                    );
+                  })}
+                {availableProducts.filter((product) => !product.isSet && product.id !== productId).length === 0 && (
+                  <p className="py-4 text-center text-xs text-gray-400">Lege zuerst Einzelprodukte an.</p>
+                )}
+              </div>
+            </div>
+          )}
+
           {/* Specs */}
           <SpecsEditor
             specs={form.specs}
@@ -512,19 +613,261 @@ function ProductForm({
   );
 }
 
+type ReferenceFormData = Omit<ReferenceInput, "sortOrder">;
+
+const emptyReferenceForm: ReferenceFormData = {
+  title: "",
+  type: "",
+  description: "",
+  location: "",
+  eventDate: "",
+  image: "",
+  visible: true,
+};
+
+function ReferenceForm({
+  initial,
+  onSubmit,
+  onCancel,
+  title,
+  submitLabel,
+  referenceId,
+}: {
+  initial: ReferenceFormData;
+  onSubmit: (data: ReferenceFormData) => Promise<void>;
+  onCancel: () => void;
+  title: string;
+  submitLabel: string;
+  referenceId?: number;
+}) {
+  const [form, setForm] = useState(initial);
+  const [error, setError] = useState("");
+  const [saving, setSaving] = useState(false);
+  const [uploading, setUploading] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  function update(patch: Partial<ReferenceFormData>) {
+    setForm((current) => ({ ...current, ...patch }));
+  }
+
+  async function handleImageUpload(event: ChangeEvent<HTMLInputElement>) {
+    const file = event.target.files?.[0];
+    if (!file) return;
+    if (!form.title.trim() && !referenceId) {
+      setError("Bitte zuerst einen Titel eingeben.");
+      event.target.value = "";
+      return;
+    }
+
+    const identifier = referenceId
+      ? `reference-${referenceId}`
+      : `reference-${form.title.toLowerCase().replace(/[äÄ]/g, "ae").replace(/[öÖ]/g, "oe").replace(/[üÜ]/g, "ue").replace(/ß/g, "ss").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")}`;
+
+    setUploading(true);
+    setError("");
+    try {
+      const data = new FormData();
+      data.append("file", file);
+      data.append("assetId", identifier);
+      const response = await fetch("/api/admin/upload", { method: "POST", body: data });
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.error || "Upload fehlgeschlagen.");
+      update({ image: result.url });
+    } catch (uploadError) {
+      setError(uploadError instanceof Error ? uploadError.message : "Upload fehlgeschlagen.");
+    }
+    setUploading(false);
+  }
+
+  async function handleSubmit(event: FormEvent) {
+    event.preventDefault();
+    setError("");
+    if (!form.title.trim() || !form.type.trim() || !form.description.trim() || !form.location.trim() || !form.eventDate || !form.image) {
+      setError("Titel, Art, Ort, Datum, Beschreibung und Bild sind erforderlich.");
+      return;
+    }
+    setSaving(true);
+    try {
+      await onSubmit(form);
+    } catch (submitError) {
+      setError(submitError instanceof Error ? submitError.message : "Fehler beim Speichern.");
+    }
+    setSaving(false);
+  }
+
+  const inputClass = "w-full rounded-xl border border-gray-200 bg-gray-50 px-3.5 py-2.5 text-sm text-gray-900 outline-none transition focus:border-brand/40 focus:ring-2 focus:ring-brand/10";
+  const labelClass = "mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-500";
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={onCancel}>
+      <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
+      <div className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-white shadow-2xl" onClick={(event) => event.stopPropagation()}>
+        <div className="sticky top-0 z-10 flex items-center justify-between rounded-t-2xl border-b border-gray-100 bg-white px-6 py-4">
+          <h2 className="font-heading text-lg font-bold text-gray-900">{title}</h2>
+          <button type="button" onClick={onCancel} className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200" aria-label="Schließen">×</button>
+        </div>
+        <form onSubmit={handleSubmit} className="space-y-5 p-6">
+          <div className="grid gap-4 sm:grid-cols-2">
+            <label><span className={labelClass}>Titel *</span><input className={inputClass} value={form.title} onChange={(event) => update({ title: event.target.value })} maxLength={255} required /></label>
+            <label><span className={labelClass}>Art der Veranstaltung *</span><input className={inputClass} value={form.type} onChange={(event) => update({ type: event.target.value })} placeholder="z. B. Konzert, Messe, Corporate" maxLength={120} required /></label>
+            <label><span className={labelClass}>Ort *</span><input className={inputClass} value={form.location} onChange={(event) => update({ location: event.target.value })} placeholder="z. B. Frankfurt am Main" maxLength={255} required /></label>
+            <label><span className={labelClass}>Datum *</span><input type="date" className={inputClass} value={form.eventDate} onChange={(event) => update({ eventDate: event.target.value })} required /></label>
+          </div>
+          <label className="block"><span className={labelClass}>Beschreibung *</span><textarea className={`${inputClass} min-h-28 resize-y`} value={form.description} onChange={(event) => update({ description: event.target.value })} maxLength={5000} required /></label>
+          <div>
+            <span className={labelClass}>Bild *</span>
+            {form.image ? (
+              <div className="relative overflow-hidden rounded-2xl border border-gray-200 bg-gray-100">
+                <img src={form.image} alt="Vorschau" className="h-56 w-full object-cover" />
+                <button type="button" onClick={() => { update({ image: "" }); if (fileInputRef.current) fileInputRef.current.value = ""; }} className="absolute right-3 top-3 rounded-lg bg-white/95 px-3 py-1.5 text-xs font-semibold text-red-500 shadow">Bild entfernen</button>
+              </div>
+            ) : (
+              <label className="flex min-h-36 cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed border-gray-200 bg-gray-50 px-6 text-center hover:border-brand/30 hover:bg-brand/[0.02]">
+                <span className="text-sm font-semibold text-gray-700">Bild auswählen</span>
+                <span className="mt-1 text-xs text-gray-400">JPEG, PNG, WebP oder GIF · max. 10 MB</span>
+                <input ref={fileInputRef} type="file" accept="image/jpeg,image/png,image/webp,image/gif" onChange={handleImageUpload} className="sr-only" />
+              </label>
+            )}
+            {uploading && <p className="mt-2 text-xs text-brand">Bild wird hochgeladen …</p>}
+          </div>
+          <label className="flex items-center gap-3 rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm font-medium text-gray-700"><input type="checkbox" checked={form.visible} onChange={(event) => update({ visible: event.target.checked })} className="h-4 w-4 accent-brand" />Auf der Website anzeigen</label>
+          {error && <div className="rounded-xl border border-red-100 bg-red-50 px-4 py-2.5 text-sm text-red-500">{error}</div>}
+          <div className="flex gap-3 pt-2">
+            <button type="button" onClick={onCancel} className="flex-1 rounded-xl border border-gray-200 py-2.5 text-sm font-semibold text-gray-600 hover:bg-gray-50">Abbrechen</button>
+            <button type="submit" disabled={saving || uploading} className="flex-1 rounded-xl bg-brand py-2.5 text-sm font-semibold text-white shadow-md shadow-brand/20 hover:bg-brand-dark disabled:opacity-60">{saving ? "Speichern …" : submitLabel}</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+}
+
+function ReferenceDeleteModal({ reference, onConfirm, onCancel }: { reference: ReferenceEntry; onConfirm: () => void; onCancel: () => void }) {
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={onCancel}>
+      <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
+      <div className="relative w-full max-w-sm rounded-2xl bg-white p-6 shadow-2xl" onClick={(event) => event.stopPropagation()}>
+        <h3 className="font-heading text-lg font-bold text-gray-900">Referenz löschen?</h3>
+        <p className="mb-6 mt-2 text-sm text-gray-500"><span className="font-semibold text-gray-700">{reference.title}</span> und das zugehörige Bild werden unwiderruflich gelöscht.</p>
+        <div className="flex gap-3"><button onClick={onCancel} className="flex-1 rounded-xl border border-gray-200 py-2.5 text-sm font-semibold text-gray-600">Abbrechen</button><button onClick={onConfirm} className="flex-1 rounded-xl bg-red-500 py-2.5 text-sm font-semibold text-white hover:bg-red-600">Löschen</button></div>
+      </div>
+    </div>
+  );
+}
+
+const INQUIRY_COLUMNS: Array<{
+  status: InquiryStatus;
+  label: string;
+  columnClass: string;
+  badgeClass: string;
+  dotClass: string;
+}> = [
+  { status: "new", label: "Neu", columnClass: "border-blue-200 bg-blue-50/60", badgeClass: "bg-blue-100 text-blue-700", dotClass: "bg-blue-500" },
+  { status: "in_progress", label: "In Bearbeitung", columnClass: "border-amber-200 bg-amber-50/60", badgeClass: "bg-amber-100 text-amber-700", dotClass: "bg-amber-500" },
+  { status: "done", label: "Erledigt", columnClass: "border-emerald-200 bg-emerald-50/60", badgeClass: "bg-emerald-100 text-emerald-700", dotClass: "bg-emerald-500" },
+];
+
+function inquiryStatus(status: InquiryStatus) {
+  return INQUIRY_COLUMNS.find((column) => column.status === status) || INQUIRY_COLUMNS[0];
+}
+
+function InquiryDetailModal({
+  inquiry,
+  onClose,
+  onStatusChange,
+}: {
+  inquiry: Inquiry;
+  onClose: () => void;
+  onStatusChange: (status: InquiryStatus) => Promise<void>;
+}) {
+  const status = inquiryStatus(inquiry.status);
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={onClose}>
+      <div className="absolute inset-0 bg-black/45 backdrop-blur-sm" />
+      <article className="relative max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-2xl bg-white shadow-2xl" onClick={(event) => event.stopPropagation()}>
+        <header className="sticky top-0 z-10 flex items-start justify-between gap-4 border-b border-gray-100 bg-white px-6 py-5">
+          <div className="min-w-0">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className={`rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider ${status.badgeClass}`}>{status.label}</span>
+              <span className={`rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider ${inquiry.kind === "rental" ? "bg-brand/10 text-brand" : "bg-violet-100 text-violet-700"}`}>{inquiry.kind === "rental" ? "Mietanfrage" : "Kontaktanfrage"}</span>
+            </div>
+            <h2 className="mt-3 font-heading text-2xl font-bold text-gray-900">{inquiry.subject || inquiry.name}</h2>
+            <p className="mt-1 text-xs text-gray-400">Eingegangen am {new Date(inquiry.createdAt).toLocaleString("de-DE")}</p>
+          </div>
+          <button type="button" onClick={onClose} className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gray-100 text-xl text-gray-500 hover:bg-gray-200" aria-label="Schließen">×</button>
+        </header>
+
+        <div className="space-y-6 p-6">
+          <section>
+            <h3 className="mb-3 text-xs font-bold uppercase tracking-wider text-gray-400">Status</h3>
+            <div className="grid gap-2 sm:grid-cols-3">
+              {INQUIRY_COLUMNS.map((column) => (
+                <button key={column.status} type="button" onClick={() => onStatusChange(column.status)} className={`flex items-center justify-center gap-2 rounded-xl border px-3 py-2.5 text-sm font-semibold transition ${inquiry.status === column.status ? `${column.columnClass} ${column.badgeClass.split(" ")[1]}` : "border-gray-200 bg-white text-gray-500 hover:bg-gray-50"}`}>
+                  <span className={`h-2 w-2 rounded-full ${column.dotClass}`} />{column.label}
+                </button>
+              ))}
+            </div>
+          </section>
+
+          <section className="grid gap-4 rounded-2xl bg-gray-50 p-5 sm:grid-cols-2">
+            <div><p className="text-xs font-bold uppercase tracking-wider text-gray-400">Name</p><p className="mt-1 text-sm font-semibold text-gray-900">{inquiry.name}</p></div>
+            <div><p className="text-xs font-bold uppercase tracking-wider text-gray-400">E-Mail</p><a href={`mailto:${inquiry.email}`} className="mt-1 block break-all text-sm font-semibold text-brand hover:underline">{inquiry.email}</a></div>
+            <div><p className="text-xs font-bold uppercase tracking-wider text-gray-400">Telefon</p>{inquiry.phone ? <a href={`tel:${inquiry.phone}`} className="mt-1 block text-sm font-semibold text-brand hover:underline">{inquiry.phone}</a> : <p className="mt-1 text-sm text-gray-400">Nicht angegeben</p>}</div>
+            <div><p className="text-xs font-bold uppercase tracking-wider text-gray-400">E-Mail-Status</p><p className={`mt-1 text-sm font-semibold ${inquiry.mailSent ? "text-emerald-600" : "text-amber-600"}`}>{inquiry.mailSent ? "E-Mail versendet" : "Nur im System gespeichert"}</p></div>
+          </section>
+
+          {(inquiry.rentalFrom || inquiry.rentalTo) && (
+            <section><h3 className="text-xs font-bold uppercase tracking-wider text-gray-400">Mietzeitraum</h3><p className="mt-2 text-sm font-semibold text-gray-800">{inquiry.rentalFrom ? new Date(`${inquiry.rentalFrom}T12:00:00`).toLocaleDateString("de-DE") : "Offen"} bis {inquiry.rentalTo ? new Date(`${inquiry.rentalTo}T12:00:00`).toLocaleDateString("de-DE") : "Offen"}</p></section>
+          )}
+
+          {inquiry.services.length > 0 && (
+            <section><h3 className="text-xs font-bold uppercase tracking-wider text-gray-400">Leistungen</h3><div className="mt-2 flex flex-wrap gap-2">{inquiry.services.map((service) => <span key={service} className="rounded-lg bg-violet-50 px-3 py-1.5 text-xs font-semibold text-violet-700">{service}</span>)}</div></section>
+          )}
+
+          {inquiry.products.length > 0 && (
+            <section>
+              <h3 className="text-xs font-bold uppercase tracking-wider text-gray-400">Angefragte Produkte</h3>
+              <div className="mt-2 divide-y divide-gray-100 overflow-hidden rounded-xl border border-gray-200">
+                {inquiry.products.map((product, index) => (
+                  <div key={`${inquiry.id}-${index}`} className="flex items-center justify-between gap-4 bg-white px-4 py-3 text-sm">
+                    <span className="font-semibold text-gray-800">{product.name || product.productName || `Produkt ${index + 1}`}</span>
+                    {product.quantity && <span className="shrink-0 rounded-md bg-gray-100 px-2 py-1 text-xs font-semibold text-gray-600">Menge: {product.quantity}</span>}
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+
+          <section><h3 className="text-xs font-bold uppercase tracking-wider text-gray-400">Nachricht</h3><p className="mt-2 whitespace-pre-wrap rounded-2xl border border-gray-200 bg-white p-4 text-sm leading-6 text-gray-700">{inquiry.message}</p></section>
+        </div>
+      </article>
+    </div>
+  );
+}
+
 // ─── Main admin page ────────────────────────────────────────────────
 
 export default function AdminPage() {
-  const [authenticated, setAuthenticated] = useState(false);
+  const [authenticated, setAuthenticated] = useState<boolean | null>(null);
   const [password, setPassword] = useState("");
-  const [pwError, setPwError] = useState(false);
+  const [pwError, setPwError] = useState("");
+  const [loggingIn, setLoggingIn] = useState(false);
 
   const [products, setProducts] = useState<Product[]>([]);
+  const [references, setReferences] = useState<ReferenceEntry[]>([]);
+  const [inquiries, setInquiries] = useState<Inquiry[]>([]);
   const [loading, setLoading] = useState(false);
+  const [maintenanceEnabled, setMaintenanceEnabled] = useState<boolean | null>(null);
+  const [savingMaintenance, setSavingMaintenance] = useState(false);
+  const [maintenanceError, setMaintenanceError] = useState("");
 
   const [showAddForm, setShowAddForm] = useState(false);
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
   const [deletingProduct, setDeletingProduct] = useState<Product | null>(null);
+  const [showReferenceForm, setShowReferenceForm] = useState(false);
+  const [editingReference, setEditingReference] = useState<ReferenceEntry | null>(null);
+  const [deletingReference, setDeletingReference] = useState<ReferenceEntry | null>(null);
+  const [selectedInquiry, setSelectedInquiry] = useState<Inquiry | null>(null);
 
   const [filterCategory, setFilterCategory] = useState("all");
   const [sortField, setSortField] = useState<"sortOrder" | "name" | "category" | "price">("sortOrder");
@@ -541,18 +884,108 @@ export default function AdminPage() {
     setLoading(false);
   }, []);
 
-  useEffect(() => {
-    if (authenticated) loadProducts();
-  }, [authenticated, loadProducts]);
-
-  function handleLogin(e: FormEvent) {
-    e.preventDefault();
-    if (password === "prostage2026") {
-      setAuthenticated(true);
-      setPwError(false);
-    } else {
-      setPwError(true);
+  const loadInquiries = useCallback(async () => {
+    try {
+      const res = await fetch("/api/admin/inquiries");
+      if (res.ok) setInquiries(await res.json());
+    } catch {
+      /* silent */
     }
+  }, []);
+
+  const loadReferences = useCallback(async () => {
+    try {
+      const res = await fetch("/api/admin/references");
+      if (res.ok) setReferences(await res.json());
+    } catch {
+      /* silent */
+    }
+  }, []);
+
+  const loadMaintenanceStatus = useCallback(async () => {
+    try {
+      const response = await fetch("/api/admin/settings/maintenance");
+      const result = await response.json();
+      if (response.ok) setMaintenanceEnabled(Boolean(result.enabled));
+    } catch {
+      setMaintenanceError("Website-Status konnte nicht geladen werden.");
+    }
+  }, []);
+
+  useEffect(() => {
+    fetch("/api/admin/session")
+      .then((res) => res.json())
+      .then((data) => setAuthenticated(Boolean(data.authenticated)))
+      .catch(() => setAuthenticated(false));
+  }, []);
+
+  useEffect(() => {
+    if (authenticated) {
+      loadProducts();
+      loadReferences();
+      loadInquiries();
+      loadMaintenanceStatus();
+    }
+  }, [authenticated, loadProducts, loadReferences, loadInquiries, loadMaintenanceStatus]);
+
+  async function handleLogin(e: FormEvent) {
+    e.preventDefault();
+    setLoggingIn(true);
+    setPwError("");
+    try {
+      const response = await fetch("/api/admin/session", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password }),
+      });
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.error || "Anmeldung fehlgeschlagen.");
+      setAuthenticated(true);
+      setPassword("");
+    } catch (error) {
+      setPwError(error instanceof Error ? error.message : "Anmeldung fehlgeschlagen.");
+    }
+    setLoggingIn(false);
+  }
+
+  async function handleLogout() {
+    await fetch("/api/admin/session", { method: "DELETE" }).catch(() => undefined);
+    setAuthenticated(false);
+    setProducts([]);
+    setReferences([]);
+    setInquiries([]);
+    setMaintenanceEnabled(null);
+  }
+
+  async function changeInquiryStatus(id: number, status: InquiryStatus) {
+    const response = await fetch(`/api/admin/inquiries/${id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ status }),
+    });
+    if (response.ok) {
+      setSelectedInquiry((current) => current?.id === id ? { ...current, status } : current);
+      await loadInquiries();
+    }
+  }
+
+  async function toggleMaintenanceMode() {
+    if (maintenanceEnabled === null || savingMaintenance) return;
+    setSavingMaintenance(true);
+    setMaintenanceError("");
+    try {
+      const response = await fetch("/api/admin/settings/maintenance", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ enabled: !maintenanceEnabled }),
+      });
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.error || "Website-Status konnte nicht gespeichert werden.");
+      setMaintenanceEnabled(Boolean(result.enabled));
+    } catch (error) {
+      setMaintenanceError(error instanceof Error ? error.message : "Website-Status konnte nicht gespeichert werden.");
+    }
+    setSavingMaintenance(false);
   }
 
   // ── CRUD helpers ──────────────────
@@ -607,6 +1040,57 @@ export default function AdminPage() {
     await loadProducts();
   }
 
+  async function toggleVisible(product: Product) {
+    await fetch(`/api/admin/products/${product.id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ visible: !product.visible }),
+    });
+    await loadProducts();
+  }
+
+  async function handleAddReference(data: ReferenceFormData) {
+    const response = await fetch("/api/admin/references", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+    const result = await response.json();
+    if (!response.ok) throw new Error(result.error || "Referenz konnte nicht erstellt werden.");
+    setShowReferenceForm(false);
+    await loadReferences();
+  }
+
+  async function handleEditReference(data: ReferenceFormData) {
+    if (!editingReference) return;
+    const response = await fetch(`/api/admin/references/${editingReference.id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+    const result = await response.json();
+    if (!response.ok) throw new Error(result.error || "Referenz konnte nicht gespeichert werden.");
+    setEditingReference(null);
+    await loadReferences();
+  }
+
+  async function handleDeleteReference() {
+    if (!deletingReference) return;
+    const response = await fetch(`/api/admin/references/${deletingReference.id}`, { method: "DELETE" });
+    if (!response.ok) return;
+    setDeletingReference(null);
+    await loadReferences();
+  }
+
+  async function toggleReferenceVisible(reference: ReferenceEntry) {
+    await fetch(`/api/admin/references/${reference.id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ visible: !reference.visible }),
+    });
+    await loadReferences();
+  }
+
   async function moveProduct(product: Product, direction: "up" | "down") {
     const sorted = [...products].sort((a, b) => a.sortOrder - b.sortOrder);
     const idx = sorted.findIndex((p) => p.id === product.id);
@@ -656,6 +1140,7 @@ export default function AdminPage() {
   const stats = {
     total: products.length,
     featured: products.filter((p) => p.featured).length,
+    hidden: products.filter((p) => !p.visible).length,
     byCategory: CATEGORY_OPTIONS.reduce(
       (acc, c) => {
         acc[c.label] = products.filter((p) => p.category === c.key).length;
@@ -677,6 +1162,10 @@ export default function AdminPage() {
   }
 
   // ── Login screen ──────────────────
+
+  if (authenticated === null) {
+    return <div className="min-h-screen bg-gray-950 grid place-items-center text-sm text-gray-400">Adminbereich wird geladen …</div>;
+  }
 
   if (!authenticated) {
     return (
@@ -706,23 +1195,24 @@ export default function AdminPage() {
               value={password}
               onChange={(e) => {
                 setPassword(e.target.value);
-                setPwError(false);
+                setPwError("");
               }}
               placeholder="Passwort eingeben"
               className={`w-full px-4 py-3 rounded-xl border text-sm text-white bg-gray-800 focus:outline-none transition-all mb-4 ${
-                pwError
+                Boolean(pwError)
                   ? "border-red-500/50 focus:border-red-400 focus:ring-2 focus:ring-red-500/20"
                   : "border-gray-700 focus:border-brand/50 focus:ring-2 focus:ring-brand/20"
               }`}
             />
             {pwError && (
-              <p className="text-xs text-red-400 mb-3">Falsches Passwort.</p>
+              <p className="text-xs text-red-400 mb-3">{pwError}</p>
             )}
             <button
               type="submit"
-              className="w-full py-3 rounded-xl text-sm font-semibold bg-brand text-white hover:bg-brand-dark transition-all"
+              disabled={loggingIn}
+              className="w-full py-3 rounded-xl text-sm font-semibold bg-brand text-white hover:bg-brand-dark transition-all disabled:opacity-60"
             >
-              Anmelden
+              {loggingIn ? "Wird angemeldet …" : "Anmelden"}
             </button>
           </form>
         </div>
@@ -743,18 +1233,33 @@ export default function AdminPage() {
           <p className="text-xs text-gray-500 mt-0.5">Admin Panel</p>
         </div>
         <nav className="flex-1 px-4 py-4">
-          <div className="px-3 py-2.5 rounded-xl bg-brand/10 text-brand text-sm font-semibold flex items-center gap-3">
+          <a href="#produkte" className="px-3 py-2.5 rounded-xl bg-brand/10 text-brand text-sm font-semibold flex items-center gap-3">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
               <rect x="2" y="3" width="20" height="14" rx="2" />
               <line x1="8" y1="21" x2="16" y2="21" />
               <line x1="12" y1="17" x2="12" y2="21" />
             </svg>
             Produkte
-          </div>
+          </a>
+          <a href="#referenzen" className="mt-2 flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-gray-400 hover:bg-white/5 hover:text-white">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" /><circle cx="8.5" cy="8.5" r="1.5" /><path d="m21 15-5-5L5 21" /></svg>
+            Referenzen
+          </a>
+          <a href="#anfragen" className="mt-2 px-3 py-2.5 rounded-xl text-gray-400 hover:bg-white/5 hover:text-white text-sm font-semibold flex items-center gap-3">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+              <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z" />
+            </svg>
+            Anfragen
+            {inquiries.filter((item) => item.status === "new").length > 0 && (
+              <span className="ml-auto rounded-full bg-brand px-2 py-0.5 text-[10px] text-white">
+                {inquiries.filter((item) => item.status === "new").length}
+              </span>
+            )}
+          </a>
         </nav>
         <div className="px-6 py-4 border-t border-gray-800">
           <button
-            onClick={() => setAuthenticated(false)}
+            onClick={handleLogout}
             className="text-xs text-gray-500 hover:text-gray-300 transition-colors"
           >
             Abmelden
@@ -771,12 +1276,12 @@ export default function AdminPage() {
               Produkt<span className="text-brand">verwaltung</span>
             </h2>
             <p className="text-xs text-gray-400 mt-0.5 hidden sm:block">
-              {products.length} Produkte verwalten
+              {products.length} Produkte · {references.length} Referenzen
             </p>
           </div>
           <div className="flex items-center gap-3">
             <button
-              onClick={() => setAuthenticated(false)}
+              onClick={handleLogout}
               className="lg:hidden text-xs text-gray-400 hover:text-gray-600 transition-colors"
             >
               Abmelden
@@ -794,11 +1299,38 @@ export default function AdminPage() {
           </div>
         </header>
 
-        <div className="px-6 lg:px-8 py-6 space-y-6">
+        <div id="produkte" className="px-6 lg:px-8 py-6 space-y-6 scroll-mt-24">
+          <section className={`rounded-2xl border p-5 shadow-sm ${maintenanceEnabled ? "border-amber-200 bg-amber-50" : "border-emerald-200 bg-emerald-50"}`}>
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex items-start gap-3">
+                <span className={`mt-1 h-3 w-3 shrink-0 rounded-full ${maintenanceEnabled ? "bg-amber-500" : "bg-emerald-500"}`} />
+                <div>
+                  <p className={`text-xs font-bold uppercase tracking-wider ${maintenanceEnabled ? "text-amber-700" : "text-emerald-700"}`}>Website-Status</p>
+                  <h3 className="mt-1 font-heading text-lg font-bold text-gray-900">
+                    {maintenanceEnabled === null ? "Status wird geladen …" : maintenanceEnabled ? "Website ist offline" : "Website ist online"}
+                  </h3>
+                  <p className="mt-1 text-sm text-gray-600">
+                    {maintenanceEnabled ? "Besucher sehen aktuell nur die Wartungsseite. Das Backoffice bleibt erreichbar." : "Alle öffentlichen Seiten sind für Besucher erreichbar."}
+                  </p>
+                  {maintenanceError && <p className="mt-2 text-xs font-semibold text-red-600">{maintenanceError}</p>}
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={toggleMaintenanceMode}
+                disabled={maintenanceEnabled === null || savingMaintenance}
+                className={`shrink-0 rounded-xl px-4 py-2.5 text-sm font-bold text-white shadow-sm transition disabled:opacity-50 ${maintenanceEnabled ? "bg-emerald-600 hover:bg-emerald-700" : "bg-amber-600 hover:bg-amber-700"}`}
+              >
+                {savingMaintenance ? "Wird gespeichert …" : maintenanceEnabled ? "Website online schalten" : "Website offline schalten"}
+              </button>
+            </div>
+          </section>
+
           {/* Stats */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-8 gap-3">
             <StatCard label="Gesamt" value={stats.total} accent />
             <StatCard label="Featured" value={stats.featured} />
+            <StatCard label="Ausgeblendet" value={stats.hidden} />
             {CATEGORY_OPTIONS.map((c) => (
               <StatCard
                 key={c.key}
@@ -887,7 +1419,7 @@ export default function AdminPage() {
                     {filtered.map((product) => (
                       <tr
                         key={product.id}
-                        className="border-b border-gray-50 hover:bg-gray-50/50 transition-colors group"
+                        className={`border-b border-gray-50 hover:bg-gray-50/50 transition-colors group ${!product.visible ? "bg-gray-50/70 opacity-65" : ""}`}
                       >
                         {/* Reorder */}
                         <td className="px-4 py-3 text-center">
@@ -921,6 +1453,12 @@ export default function AdminPage() {
                           >
                             <div className="font-medium text-gray-900 group-hover/name:text-brand transition-colors">
                               {product.name}
+                              {product.isSet && (
+                                <span className="ml-2 rounded-full bg-brand/10 px-2 py-0.5 text-[10px] font-bold uppercase text-brand">Set</span>
+                              )}
+                              {!product.visible && (
+                                <span className="ml-2 rounded-full bg-gray-200 px-2 py-0.5 text-[10px] font-bold uppercase text-gray-600">Ausgeblendet</span>
+                              )}
                             </div>
                             <div className="text-xs text-gray-400 mt-0.5 line-clamp-1 max-w-[300px]">
                               {product.description}
@@ -993,6 +1531,17 @@ export default function AdminPage() {
                         <td className="px-4 py-3 text-right">
                           <div className="flex items-center justify-end gap-1">
                             <button
+                              onClick={() => toggleVisible(product)}
+                              className={`p-2 rounded-lg transition-all ${product.visible ? "text-emerald-500 hover:bg-emerald-50" : "text-gray-400 hover:bg-gray-100"}`}
+                              title={product.visible ? "Produkt ausblenden" : "Produkt einblenden"}
+                            >
+                              {product.visible ? (
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12Z" /><circle cx="12" cy="12" r="3" /></svg>
+                              ) : (
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m3 3 18 18" /><path d="M10.6 10.6a2 2 0 0 0 2.8 2.8" /><path d="M9.9 4.2A10.5 10.5 0 0 1 12 4c7 0 11 8 11 8a18 18 0 0 1-2.1 3.2" /><path d="M6.6 6.6C3.2 8.3 1 12 1 12s4 8 11 8a10.5 10.5 0 0 0 5.4-1.5" /></svg>
+                              )}
+                            </button>
+                            <button
                               onClick={() => setEditingProduct(product)}
                               className="p-2 text-gray-400 hover:text-brand hover:bg-brand/5 rounded-lg transition-all"
                               title="Bearbeiten"
@@ -1031,6 +1580,86 @@ export default function AdminPage() {
               </div>
             </div>
           )}
+
+          <section id="referenzen" className="scroll-mt-24 pt-8">
+            <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wider text-brand">Projekte & Veranstaltungen</p>
+                <h2 className="mt-1 font-heading text-2xl font-bold text-gray-900">Referenzen</h2>
+                <p className="mt-1 text-sm text-gray-500">Einträge für die öffentliche Referenzseite verwalten.</p>
+              </div>
+              <button onClick={() => setShowReferenceForm(true)} className="flex items-center justify-center gap-2 rounded-xl bg-brand px-4 py-2.5 text-sm font-semibold text-white shadow-md shadow-brand/20 hover:bg-brand-dark">
+                <span className="text-lg leading-none">+</span> Neue Referenz
+              </button>
+            </div>
+            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+              {references.map((reference) => (
+                <article key={reference.id} className={`overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm ${!reference.visible ? "opacity-65" : ""}`}>
+                  <div className="relative h-44 bg-gray-100">
+                    <img src={reference.image} alt="" className="h-full w-full object-cover" />
+                    <span className={`absolute right-3 top-3 rounded-full px-2.5 py-1 text-[10px] font-bold uppercase shadow-sm ${reference.visible ? "bg-emerald-50 text-emerald-600" : "bg-gray-100 text-gray-600"}`}>{reference.visible ? "Sichtbar" : "Ausgeblendet"}</span>
+                  </div>
+                  <div className="p-4">
+                    <div className="flex flex-wrap gap-2 text-xs text-gray-500"><span className="font-semibold uppercase tracking-wider text-brand">{reference.type}</span><span>·</span><span>{reference.location}</span><span>·</span><time>{new Date(`${reference.eventDate}T12:00:00`).toLocaleDateString("de-DE")}</time></div>
+                    <h3 className="mt-2 font-heading text-lg font-bold text-gray-900">{reference.title}</h3>
+                    <p className="mt-1 line-clamp-2 text-sm leading-5 text-gray-500">{reference.description}</p>
+                    <div className="mt-4 flex items-center justify-end gap-1 border-t border-gray-100 pt-3">
+                      <button onClick={() => toggleReferenceVisible(reference)} className={`rounded-lg p-2 ${reference.visible ? "text-emerald-500 hover:bg-emerald-50" : "text-gray-400 hover:bg-gray-100"}`} title={reference.visible ? "Referenz ausblenden" : "Referenz einblenden"}>{reference.visible ? "◉" : "○"}</button>
+                      <button onClick={() => setEditingReference(reference)} className="rounded-lg px-3 py-2 text-xs font-semibold text-gray-500 hover:bg-brand/5 hover:text-brand">Bearbeiten</button>
+                      <button onClick={() => setDeletingReference(reference)} className="rounded-lg px-3 py-2 text-xs font-semibold text-gray-400 hover:bg-red-50 hover:text-red-500">Löschen</button>
+                    </div>
+                  </div>
+                </article>
+              ))}
+              {references.length === 0 && (
+                <div className="col-span-full rounded-2xl border border-dashed border-gray-300 bg-white px-6 py-12 text-center">
+                  <p className="text-sm text-gray-400">Noch keine Referenzen vorhanden.</p>
+                  <button onClick={() => setShowReferenceForm(true)} className="mt-3 text-sm font-semibold text-brand hover:text-brand-dark">Erste Referenz anlegen</button>
+                </div>
+              )}
+            </div>
+          </section>
+
+          <section id="anfragen" className="scroll-mt-24 pt-8">
+            <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wider text-brand">Posteingang</p>
+                <h2 className="mt-1 font-heading text-2xl font-bold text-gray-900">Anfragen</h2>
+              </div>
+              <p className="text-xs text-gray-400">{inquiries.length} gespeicherte Anfragen</p>
+            </div>
+            <div className="grid items-start gap-4 xl:grid-cols-3">
+              {INQUIRY_COLUMNS.map((column) => {
+                const columnInquiries = inquiries.filter((inquiry) => inquiry.status === column.status);
+                return (
+                  <div key={column.status} className={`rounded-2xl border p-3 ${column.columnClass}`}>
+                    <div className="mb-3 flex items-center justify-between px-1 py-1">
+                      <div className="flex items-center gap-2"><span className={`h-2.5 w-2.5 rounded-full ${column.dotClass}`} /><h3 className="text-sm font-bold text-gray-800">{column.label}</h3></div>
+                      <span className={`rounded-full px-2.5 py-1 text-xs font-bold ${column.badgeClass}`}>{columnInquiries.length}</span>
+                    </div>
+                    <div className="space-y-3">
+                      {columnInquiries.map((inquiry) => (
+                        <button key={inquiry.id} type="button" onClick={() => setSelectedInquiry(inquiry)} className="block w-full rounded-xl border border-white/80 bg-white p-4 text-left shadow-sm transition hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-md">
+                          <div className="flex items-center justify-between gap-3">
+                            <span className={`rounded-full px-2 py-1 text-[9px] font-bold uppercase tracking-wider ${inquiry.kind === "rental" ? "bg-brand/10 text-brand" : "bg-violet-100 text-violet-700"}`}>{inquiry.kind === "rental" ? "Miete" : "Kontakt"}</span>
+                            <time className="text-[11px] text-gray-400">{new Date(inquiry.createdAt).toLocaleDateString("de-DE")}</time>
+                          </div>
+                          <h4 className="mt-3 line-clamp-2 font-heading text-base font-bold text-gray-900">{inquiry.subject || inquiry.name}</h4>
+                          <p className="mt-1 truncate text-xs font-medium text-gray-500">{inquiry.name}</p>
+                          <p className="mt-3 line-clamp-2 text-xs leading-5 text-gray-500">{inquiry.message}</p>
+                          <div className="mt-4 flex items-center justify-between border-t border-gray-100 pt-3">
+                            <span className={`text-[10px] font-semibold ${inquiry.mailSent ? "text-emerald-600" : "text-amber-600"}`}>{inquiry.mailSent ? "E-Mail versendet" : "Nur gespeichert"}</span>
+                            <span className="text-xs font-bold text-brand">Details →</span>
+                          </div>
+                        </button>
+                      ))}
+                      {columnInquiries.length === 0 && <div className="rounded-xl border border-dashed border-gray-300/80 bg-white/50 px-4 py-8 text-center text-xs text-gray-400">Keine Anfragen</div>}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </section>
         </div>
       </main>
 
@@ -1039,6 +1668,7 @@ export default function AdminPage() {
       {showAddForm && (
         <ProductForm
           initial={emptyForm}
+          availableProducts={products}
           onSubmit={handleAdd}
           onCancel={() => setShowAddForm(false)}
           title="Neues Produkt anlegen"
@@ -1056,9 +1686,13 @@ export default function AdminPage() {
             unit: editingProduct.unit,
             availability: editingProduct.availability,
             featured: editingProduct.featured,
+            visible: editingProduct.visible,
             specs: editingProduct.specs,
             image: editingProduct.image,
+            isSet: editingProduct.isSet,
+            setItems: editingProduct.setItems,
           }}
+          availableProducts={products}
           onSubmit={handleEdit}
           onCancel={() => setEditingProduct(null)}
           title="Produkt bearbeiten"
@@ -1072,6 +1706,51 @@ export default function AdminPage() {
           product={deletingProduct}
           onConfirm={handleDelete}
           onCancel={() => setDeletingProduct(null)}
+        />
+      )}
+
+      {showReferenceForm && (
+        <ReferenceForm
+          initial={emptyReferenceForm}
+          onSubmit={handleAddReference}
+          onCancel={() => setShowReferenceForm(false)}
+          title="Neue Referenz anlegen"
+          submitLabel="Referenz anlegen"
+        />
+      )}
+
+      {editingReference && (
+        <ReferenceForm
+          initial={{
+            title: editingReference.title,
+            type: editingReference.type,
+            description: editingReference.description,
+            location: editingReference.location,
+            eventDate: editingReference.eventDate,
+            image: editingReference.image,
+            visible: editingReference.visible,
+          }}
+          referenceId={editingReference.id}
+          onSubmit={handleEditReference}
+          onCancel={() => setEditingReference(null)}
+          title="Referenz bearbeiten"
+          submitLabel="Speichern"
+        />
+      )}
+
+      {deletingReference && (
+        <ReferenceDeleteModal
+          reference={deletingReference}
+          onConfirm={handleDeleteReference}
+          onCancel={() => setDeletingReference(null)}
+        />
+      )}
+
+      {selectedInquiry && (
+        <InquiryDetailModal
+          inquiry={selectedInquiry}
+          onClose={() => setSelectedInquiry(null)}
+          onStatusChange={(status) => changeInquiryStatus(selectedInquiry.id, status)}
         />
       )}
     </div>

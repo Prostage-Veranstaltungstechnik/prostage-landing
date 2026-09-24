@@ -1,249 +1,2337 @@
 [
   {
-    "id": "line-array",
-    "name": "Line Array Element",
+    "id": "eventworx-a-0001",
+    "name": "Wing Fullsize",
     "category": "ton",
     "categoryLabel": "Tontechnik",
-    "description": "Hochleistungs-Line-Array für große Beschallungen mit perfekter Abdeckung.",
-    "price": "ab 120€",
+    "description": "Mischpult mit 48 Stereokanäle | 16 Busen | 4 Mains | 8 Matizen. 8 Mic Preamps | 8 Aux in | 8 Aux out | 8 XLR out | 3 AES50 Ethercon",
+    "price": "118,00 €",
     "unit": "/Tag",
     "specs": {
-      "Leistung": "1400W RMS",
-      "Frequenzbereich": "55 Hz – 20 kHz",
-      "Abstrahlwinkel": "110° x 10°",
-      "Gewicht": "28 kg"
+      "Artikelnummer": "A-0001",
+      "Hersteller": "Behringer",
+      "Inventargruppe": "Tontechnik › Mischpult",
+      "Gewicht": "24000 kg"
     },
     "availability": "Verfügbar",
-    "featured": true,
+    "featured": false,
     "sortOrder": 0,
-    "image": null
+    "image": "/products/eventworx-a-0001.jpg",
+    "isSet": false,
+    "setItems": [],
+    "visible": true
   },
   {
-    "id": "subwoofer",
-    "name": "Subwoofer-System (2er Set)",
+    "id": "eventworx-a-0002",
+    "name": "Tour Case Wing Fullsize",
     "category": "ton",
     "categoryLabel": "Tontechnik",
-    "description": "Kraftvolle Tieftonwiedergabe für druckvolle Bässe bei jeder Veranstaltung.",
-    "price": "ab 180€",
+    "description": "Tour Case Wing Fullsize von Flyht Pro aus unserem Mietinventar.",
+    "price": "Auf Anfrage",
     "unit": "/Tag",
     "specs": {
-      "Leistung": "2x 2000W RMS",
-      "Frequenzbereich": "28 Hz – 150 Hz",
-      "Treiber": "2x 18\" Neodym",
-      "Gewicht": "2x 55 kg"
+      "Artikelnummer": "A-0002",
+      "Hersteller": "Flyht Pro",
+      "Inventargruppe": "Tontechnik › Cases",
+      "Gewicht": "21500 kg"
     },
     "availability": "Verfügbar",
     "featured": false,
     "sortOrder": 1,
-    "image": null
+    "image": "/products/eventworx-a-0002.jpg",
+    "isSet": false,
+    "setItems": [],
+    "visible": true
   },
   {
-    "id": "mischpult",
-    "name": "Digitales Mischpult",
+    "id": "eventworx-a-0003",
+    "name": "SD16 Stagebox",
     "category": "ton",
     "categoryLabel": "Tontechnik",
-    "description": "Professionelles Digitalpult mit 32+ Kanälen, Effekten und Remote-Steuerung.",
-    "price": "ab 450€",
+    "description": "AES50 Stagebox 16 Mic Preamp | 8 XLR out | 2 AES50 Ethercon",
+    "price": "25,00 €",
     "unit": "/Tag",
     "specs": {
-      "Kanäle": "32 Eingänge / 16 Busse",
-      "Effekte": "8 Stereo-Effektprozessoren",
-      "Abtastrate": "96 kHz",
-      "Steuerung": "iPad / Laptop Remote"
+      "Artikelnummer": "A-0003",
+      "Hersteller": "Behringer",
+      "Inventargruppe": "Tontechnik › Mischpult",
+      "Gewicht": "3200 kg"
     },
     "availability": "Verfügbar",
     "featured": false,
     "sortOrder": 2,
-    "image": null
+    "image": "/products/eventworx-a-0003.jpg",
+    "isSet": false,
+    "setItems": [],
+    "visible": true
   },
   {
-    "id": "mikrofon-set",
-    "name": "Wireless Mikrofon-Set (4x)",
+    "id": "eventworx-a-0004",
+    "name": "sE V7 X Instrumentenmikrofon",
     "category": "ton",
     "categoryLabel": "Tontechnik",
-    "description": "Vier drahtlose Mikrofone mit stabilem Empfang für Bühne und Konferenz.",
-    "price": "ab 180€",
+    "description": "sE V7 X Instrumentenmikrofon von sE Electronics aus unserem Mietinventar.",
+    "price": "4,50 €",
     "unit": "/Tag",
     "specs": {
-      "Typ": "Handheld + Headset",
-      "Frequenzband": "UHF 470–865 MHz",
-      "Reichweite": "bis 100m",
-      "Akkulaufzeit": "ca. 8 Stunden"
+      "Artikelnummer": "A-0004",
+      "Hersteller": "sE Electronics",
+      "Inventargruppe": "Tontechnik › Mikrofone",
+      "Gewicht": "269 kg"
     },
     "availability": "Verfügbar",
     "featured": false,
     "sortOrder": 3,
-    "image": null
+    "image": "/products/eventworx-a-0004.jpg",
+    "isSet": false,
+    "setItems": [],
+    "visible": true
   },
   {
-    "id": "moving-heads",
-    "name": "Moving Head Set (4x)",
-    "category": "licht",
-    "categoryLabel": "Lichttechnik",
-    "description": "Vier leistungsstarke Moving Heads mit Spot/Wash-Funktion und DMX-Steuerung.",
-    "price": "ab 320€",
+    "id": "eventworx-a-0005",
+    "name": "SKM 835-XSW-GB",
+    "category": "ton",
+    "categoryLabel": "Tontechnik",
+    "description": "Handmikrofon für XSW GB-Band Empfänger mit 835 Kapsel",
+    "price": "10,00 €",
     "unit": "/Tag",
     "specs": {
-      "Leistung": "4x 280W Osram",
-      "Modus": "Spot / Wash / Beam",
-      "DMX-Kanäle": "16 / 24 Kanal",
-      "Gewicht": "4x 19 kg"
+      "Artikelnummer": "A-0005",
+      "Hersteller": "Sennheiser",
+      "Inventargruppe": "Tontechnik › Mikrofone"
     },
     "availability": "Verfügbar",
-    "featured": true,
+    "featured": false,
     "sortOrder": 4,
-    "image": null
+    "image": "/products/eventworx-a-0005.jpg",
+    "isSet": false,
+    "setItems": [],
+    "visible": true
   },
   {
-    "id": "led-par",
-    "name": "LED Par Set (12x)",
-    "category": "licht",
-    "categoryLabel": "Lichttechnik",
-    "description": "12 RGBW LED-Scheinwerfer für farbige Ausleuchtung und Stimmungslicht.",
-    "price": "ab 140€",
+    "id": "eventworx-a-0006",
+    "name": "SK-XSW-GB",
+    "category": "ton",
+    "categoryLabel": "Tontechnik",
+    "description": "Bodypack für XSW GB-Band Empfänger",
+    "price": "6,00 €",
     "unit": "/Tag",
     "specs": {
-      "LEDs": "12x 10W RGBW",
-      "Abstrahlwinkel": "25°",
-      "Steuerung": "DMX / Standalone",
-      "Gewicht": "12x 2,5 kg"
+      "Artikelnummer": "A-0006",
+      "Hersteller": "Sennheiser",
+      "Inventargruppe": "Tontechnik › Funkstrecken"
     },
     "availability": "Verfügbar",
     "featured": false,
     "sortOrder": 5,
-    "image": null
+    "image": "/products/eventworx-a-0006.jpg",
+    "isSet": false,
+    "setItems": [],
+    "visible": true
   },
   {
-    "id": "followspot",
-    "name": "Followspot",
-    "category": "licht",
-    "categoryLabel": "Lichttechnik",
-    "description": "Professioneller Verfolgungsscheinwerfer für gezielte Personen-Ausleuchtung.",
-    "price": "ab 130€",
+    "id": "eventworx-a-0007",
+    "name": "EM-XSW 2-GB",
+    "category": "ton",
+    "categoryLabel": "Tontechnik",
+    "description": "Empfänger für XSW 2 GB Band Funkstrecke",
+    "price": "14,00 €",
     "unit": "/Tag",
     "specs": {
-      "Leistung": "1200W HMI",
-      "Reichweite": "bis 50m",
-      "Zoom": "8°–22°",
-      "Gewicht": "35 kg inkl. Stativ"
+      "Artikelnummer": "A-0007",
+      "Hersteller": "Sennheiser",
+      "Inventargruppe": "Tontechnik › Funkstrecken"
     },
     "availability": "Verfügbar",
     "featured": false,
     "sortOrder": 6,
-    "image": null
+    "image": "/products/eventworx-a-0007.jpg",
+    "isSet": false,
+    "setItems": [],
+    "visible": true
   },
   {
-    "id": "grandma3",
-    "name": "GrandMA3 Light Pult",
-    "category": "licht",
-    "categoryLabel": "Lichttechnik",
-    "description": "Das Industrie-Standard Lichtpult für professionelle Shows und Produktionen.",
-    "price": "ab 400€",
+    "id": "eventworx-a-0008",
+    "name": "Mikrofonklemme sE V7 X",
+    "category": "ton",
+    "categoryLabel": "Tontechnik",
+    "description": "Mikrofonklemme sE V7 X von sE Electronics aus unserem Mietinventar.",
+    "price": "Auf Anfrage",
     "unit": "/Tag",
     "specs": {
-      "Universen": "256 DMX-Universen",
-      "Displays": "2x Touchscreen",
-      "Encoder": "6 Dual-Encoder",
-      "Netzwerk": "MA-Net3, sACN, Art-Net"
+      "Artikelnummer": "A-0008",
+      "Hersteller": "sE Electronics",
+      "Inventargruppe": "Tontechnik › Zubehör"
     },
-    "availability": "Auf Anfrage",
-    "featured": true,
+    "availability": "Verfügbar",
+    "featured": false,
     "sortOrder": 7,
-    "image": null
+    "image": null,
+    "isSet": false,
+    "setItems": [],
+    "visible": true
   },
   {
-    "id": "traversen",
-    "name": "Traversensystem",
-    "category": "vermietung",
-    "categoryLabel": "Vermietung",
-    "description": "Modulare Alu-Traversen für flexible Aufbauten und sichere Lastabtragung.",
-    "price": "ab 200€",
+    "id": "eventworx-a-0009",
+    "name": "Mikrofonklemme SKM 835-XSW",
+    "category": "ton",
+    "categoryLabel": "Tontechnik",
+    "description": "Mikrofonklemme SKM 835-XSW von Sennheiser aus unserem Mietinventar.",
+    "price": "Auf Anfrage",
     "unit": "/Tag",
     "specs": {
-      "Material": "Aluminium 6082-T6",
-      "Profilgröße": "290mm x 290mm",
-      "Tragkraft": "bis 500 kg/m",
-      "Längen": "0,5m – 4m Module"
+      "Artikelnummer": "A-0009",
+      "Hersteller": "Sennheiser",
+      "Inventargruppe": "Tontechnik › Zubehör"
     },
     "availability": "Verfügbar",
     "featured": false,
     "sortOrder": 8,
-    "image": null
+    "image": null,
+    "isSet": false,
+    "setItems": [],
+    "visible": true
   },
   {
-    "id": "buehnenpodest",
-    "name": "Bühnenpodest-Set 4x4m",
-    "category": "vermietung",
-    "categoryLabel": "Vermietung",
-    "description": "Stabiles Bühnensystem mit variablen Höhen — ideal für Konzerte und Events.",
-    "price": "ab 350€",
+    "id": "eventworx-a-0010",
+    "name": "TR1 Kabel 2,5 10m",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "TR1 Kabel 2,5 10m aus unserem Mietinventar.",
+    "price": "1,00 €",
     "unit": "/Tag",
     "specs": {
-      "Fläche": "4m x 4m (16m²)",
-      "Höhenverstellung": "0,4m – 1,4m",
-      "Tragkraft": "750 kg/m²",
-      "Material": "Stahl / Siebdruckplatte"
+      "Artikelnummer": "A-0010",
+      "Inventargruppe": "Kabel › Strom"
     },
     "availability": "Verfügbar",
     "featured": false,
     "sortOrder": 9,
-    "image": null
+    "image": null,
+    "isSet": false,
+    "setItems": [],
+    "visible": true
   },
   {
-    "id": "kettenzug",
-    "name": "Kettenzug 1t",
-    "category": "vermietung",
-    "categoryLabel": "Vermietung",
-    "description": "Elektrischer Kettenzug mit 1 Tonne Tragkraft für sicheres Rigging.",
-    "price": "ab 80€",
+    "id": "eventworx-a-0011",
+    "name": "TR1 Kabel 2,5 5m",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "TR1 Kabel 2,5 5m aus unserem Mietinventar.",
+    "price": "0,75 €",
     "unit": "/Tag",
     "specs": {
-      "Tragkraft": "1000 kg",
-      "Hubhöhe": "bis 20m",
-      "Geschwindigkeit": "4 m/min",
-      "Steuerung": "Direktsteuerung / DMX"
+      "Artikelnummer": "A-0011",
+      "Inventargruppe": "Kabel › Strom"
     },
     "availability": "Verfügbar",
     "featured": false,
     "sortOrder": 10,
-    "image": null
+    "image": null,
+    "isSet": false,
+    "setItems": [],
+    "visible": true
   },
   {
-    "id": "led-wall",
-    "name": "LED Wall (pro m²)",
-    "category": "fullservice",
-    "categoryLabel": "Full Service",
-    "description": "Hochauflösende LED-Module für beeindruckende Videowände in jeder Größe.",
-    "price": "ab 250€",
+    "id": "eventworx-a-0012",
+    "name": "TR1 Kabel 2,5 3m",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "TR1 Kabel 2,5 3m aus unserem Mietinventar.",
+    "price": "0,50 €",
     "unit": "/Tag",
     "specs": {
-      "Pixelpitch": "2,9mm Indoor / 3,9mm Outdoor",
-      "Helligkeit": "5000 nits",
-      "Auflösung": "500x500mm Panels",
-      "Refresh Rate": "3840 Hz"
+      "Artikelnummer": "A-0012",
+      "Inventargruppe": "Kabel › Strom"
     },
     "availability": "Verfügbar",
-    "featured": true,
+    "featured": false,
     "sortOrder": 11,
-    "image": null
+    "image": null,
+    "isSet": false,
+    "setItems": [],
+    "visible": true
   },
   {
-    "id": "beamer",
-    "name": "Beamer 10.000 Lumen",
-    "category": "fullservice",
-    "categoryLabel": "Full Service",
-    "description": "Lichtstarker Projektor für Präsentationen, Mapping und große Projektionsflächen.",
-    "price": "ab 250€",
+    "id": "eventworx-a-0013",
+    "name": "TR1 Kabel 2,5 2m",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "TR1 Kabel 2,5 2m aus unserem Mietinventar.",
+    "price": "0,50 €",
     "unit": "/Tag",
     "specs": {
-      "Helligkeit": "10.000 ANSI Lumen",
-      "Auflösung": "WUXGA (1920x1200)",
-      "Kontrast": "10.000:1",
-      "Objektiv": "Wechselobjektiv-System"
+      "Artikelnummer": "A-0013",
+      "Inventargruppe": "Kabel › Strom"
     },
-    "availability": "Auf Anfrage",
+    "availability": "Verfügbar",
     "featured": false,
     "sortOrder": 12,
-    "image": null
+    "image": null,
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0014",
+    "name": "TR1 Kabel 2,5 1m",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "TR1 Kabel 2,5 1m aus unserem Mietinventar.",
+    "price": "0,25 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0014",
+      "Inventargruppe": "Kabel › Strom"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 13,
+    "image": null,
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0015",
+    "name": "TR1 Kabel 2,5 20m",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "TR1 Kabel 2,5 20m aus unserem Mietinventar.",
+    "price": "2,00 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0015",
+      "Inventargruppe": "Kabel › Strom"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 14,
+    "image": null,
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0016",
+    "name": "TR1 Kabel 1,5 10m",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "TR1 Kabel 1,5 10m aus unserem Mietinventar.",
+    "price": "1,00 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0016",
+      "Inventargruppe": "Kabel › Strom"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 15,
+    "image": null,
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0017",
+    "name": "TR1 Kabel 1,5 5m",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "TR1 Kabel 1,5 5m aus unserem Mietinventar.",
+    "price": "0,75 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0017",
+      "Inventargruppe": "Kabel › Strom"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 16,
+    "image": null,
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0018",
+    "name": "TR1 Schuko Kabel 1,5",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "TR1 Schuko Kabel 1,5 aus unserem Mietinventar.",
+    "price": "0,75 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0018",
+      "Inventargruppe": "Kabel › Strom"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 17,
+    "image": null,
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0019",
+    "name": "Schuko TR1 Kabel 1,5",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "Schuko TR1 Kabel 1,5 aus unserem Mietinventar.",
+    "price": "0,75 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0019",
+      "Inventargruppe": "Kabel › Strom"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 18,
+    "image": null,
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0020",
+    "name": "Schuko TR1 Kabel 2,5",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "Schuko TR1 Kabel 2,5 aus unserem Mietinventar.",
+    "price": "0,75 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0020",
+      "Inventargruppe": "Kabel › Strom"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 19,
+    "image": null,
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0021",
+    "name": "free solo Antennen Splitter",
+    "category": "ton",
+    "categoryLabel": "Tontechnik",
+    "description": "free solo Antennen Splitter von the t.bone aus unserem Mietinventar.",
+    "price": "8,00 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0021",
+      "Hersteller": "the t.bone",
+      "Inventargruppe": "Tontechnik › Funkstrecken",
+      "Gewicht": "2000 kg"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 20,
+    "image": "/products/eventworx-a-0021.jpg",
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0022",
+    "name": "Schublade 2 HE Stahl",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "Schublade 2 HE Stahl von Thon aus unserem Mietinventar.",
+    "price": "3,00 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0022",
+      "Hersteller": "Thon",
+      "Inventargruppe": "Rack › Zubehör",
+      "Gewicht": "7900 kg"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 21,
+    "image": "/products/eventworx-a-0022.jpg",
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0024",
+    "name": "Schaumstoffeinlage für Mikrofonaufbewahrung",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "Schaumstoffeinlage für Mikrofonaufbewahrung von Adam Hall aus unserem Mietinventar.",
+    "price": "Auf Anfrage",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0024",
+      "Hersteller": "Adam Hall",
+      "Inventargruppe": "Zubehör › Inlay"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 22,
+    "image": null,
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0025",
+    "name": "Rack 4HE Live 40",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "Rack 4HE Live 40 von Thon aus unserem Mietinventar.",
+    "price": "7,00 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0025",
+      "Hersteller": "Thon",
+      "Inventargruppe": "Rack",
+      "Gewicht": "8700 kg"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 23,
+    "image": "/products/eventworx-a-0025.jpg",
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0023",
+    "name": "Stage Rack 9,5\" 5HE Double Door",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "Stage Rack 9,5\" 5HE Double Door von Flyht Pro aus unserem Mietinventar.",
+    "price": "3,00 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0023",
+      "Hersteller": "Flyht Pro",
+      "Inventargruppe": "Rack",
+      "Gewicht": "5200 kg"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 24,
+    "image": "/products/eventworx-a-0023.jpg",
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0026",
+    "name": "Cloud Gateway Ultra",
+    "category": "netzwerk",
+    "categoryLabel": "Netzwerktechnik",
+    "description": "Cloud Gateway Ultra von Ubiquiti aus unserem Mietinventar.",
+    "price": "4,50 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0026",
+      "Hersteller": "Ubiquiti",
+      "Inventargruppe": "Netzwerktechnik",
+      "Gewicht": "520 kg"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 25,
+    "image": "/products/eventworx-a-0026.jpg",
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0027",
+    "name": "Switch Ultra",
+    "category": "netzwerk",
+    "categoryLabel": "Netzwerktechnik",
+    "description": "Switch Ultra von Ubiquiti aus unserem Mietinventar.",
+    "price": "6,50 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0027",
+      "Hersteller": "Ubiquiti",
+      "Inventargruppe": "Netzwerktechnik",
+      "Gewicht": "320 kg"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 26,
+    "image": "/products/eventworx-a-0027.jpg",
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0028",
+    "name": "60W 54V Netzteil",
+    "category": "netzwerk",
+    "categoryLabel": "Netzwerktechnik",
+    "description": "60W 54V Netzteil von Ubiquiti aus unserem Mietinventar.",
+    "price": "Auf Anfrage",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0028",
+      "Hersteller": "Ubiquiti",
+      "Inventargruppe": "Netzwerktechnik › Zubehör",
+      "Gewicht": "330 kg"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 27,
+    "image": null,
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0030",
+    "name": "Switch Flex Mini",
+    "category": "netzwerk",
+    "categoryLabel": "Netzwerktechnik",
+    "description": "Switch Flex Mini von Ubiquiti aus unserem Mietinventar.",
+    "price": "1,50 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0030",
+      "Hersteller": "Ubiquiti",
+      "Inventargruppe": "Netzwerktechnik",
+      "Gewicht": "150 kg"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 28,
+    "image": "/products/eventworx-a-0030.jpg",
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0031",
+    "name": "Flex Mini 5V USB-C Netzteil",
+    "category": "netzwerk",
+    "categoryLabel": "Netzwerktechnik",
+    "description": "Flex Mini 5V USB-C Netzteil von Ubiquiti aus unserem Mietinventar.",
+    "price": "Auf Anfrage",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0031",
+      "Hersteller": "Ubiquiti",
+      "Inventargruppe": "Netzwerktechnik › Zubehör"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 29,
+    "image": null,
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0032",
+    "name": "UCG 5V USB-C Netzteil",
+    "category": "netzwerk",
+    "categoryLabel": "Netzwerktechnik",
+    "description": "UCG 5V USB-C Netzteil von Ubiquiti aus unserem Mietinventar.",
+    "price": "Auf Anfrage",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0032",
+      "Hersteller": "Ubiquiti",
+      "Inventargruppe": "Netzwerktechnik › Zubehör"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 30,
+    "image": null,
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0033",
+    "name": "U6 Mesh AP",
+    "category": "netzwerk",
+    "categoryLabel": "Netzwerktechnik",
+    "description": "U6 Mesh AP von Ubiquiti aus unserem Mietinventar.",
+    "price": "8,00 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0033",
+      "Hersteller": "Ubiquiti",
+      "Inventargruppe": "Netzwerktechnik",
+      "Gewicht": "400 kg"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 31,
+    "image": "/products/eventworx-a-0033.jpg",
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0034",
+    "name": "Ethercon RJ45 Kabel 5m Cat 5E",
+    "category": "netzwerk",
+    "categoryLabel": "Netzwerktechnik",
+    "description": "Ethercon RJ45 Kabel 5m Cat 5E aus unserem Mietinventar.",
+    "price": "0,50 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0034",
+      "Inventargruppe": "Kabel › Netzwerk"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 32,
+    "image": null,
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0035",
+    "name": "H07RN-F 3x2,5 Kabel",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "H07RN-F 3x2,5 Kabel aus unserem Mietinventar.",
+    "price": "Auf Anfrage",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0035",
+      "Inventargruppe": "Internes Material › Meterware",
+      "Gewicht": "240 kg"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 33,
+    "image": null,
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0036",
+    "name": "Ethercon RJ45 Kabel 2m Cat 5E",
+    "category": "netzwerk",
+    "categoryLabel": "Netzwerktechnik",
+    "description": "Ethercon RJ45 Kabel 2m Cat 5E aus unserem Mietinventar.",
+    "price": "0,25 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0036",
+      "Inventargruppe": "Kabel › Netzwerk"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 34,
+    "image": null,
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0037",
+    "name": "Ethercon Kabel 5m Cat 5E",
+    "category": "netzwerk",
+    "categoryLabel": "Netzwerktechnik",
+    "description": "Ethercon Kabel 5m Cat 5E aus unserem Mietinventar.",
+    "price": "0,50 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0037",
+      "Inventargruppe": "Kabel › Netzwerk"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 35,
+    "image": null,
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0038",
+    "name": "Ethercon Kabel 2m Cat 5E",
+    "category": "netzwerk",
+    "categoryLabel": "Netzwerktechnik",
+    "description": "Ethercon Kabel 2m Cat 5E aus unserem Mietinventar.",
+    "price": "0,25 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0038",
+      "Inventargruppe": "Kabel › Netzwerk"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 36,
+    "image": null,
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0039",
+    "name": "Ethercon Kabel 60m Cat 5E",
+    "category": "netzwerk",
+    "categoryLabel": "Netzwerktechnik",
+    "description": "Ethercon Kabel 60m Cat 5E aus unserem Mietinventar.",
+    "price": "8,00 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0039",
+      "Inventargruppe": "Kabel › Netzwerk"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 37,
+    "image": null,
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0040",
+    "name": "Kabeltrommel S 70224",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "Kabeltrommel S 70224 von Adam Hall aus unserem Mietinventar.",
+    "price": "Auf Anfrage",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0040",
+      "Hersteller": "Adam Hall",
+      "Inventargruppe": "Zubehör",
+      "Gewicht": "1200 kg"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 38,
+    "image": null,
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0041",
+    "name": "Ethercon Kabel 5m Cat 6A",
+    "category": "netzwerk",
+    "categoryLabel": "Netzwerktechnik",
+    "description": "Ethercon Kabel 5m Cat 6A aus unserem Mietinventar.",
+    "price": "0,50 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0041",
+      "Inventargruppe": "Kabel › Netzwerk"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 39,
+    "image": null,
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0042",
+    "name": "Ethercon Kabel 20m Cat 6A",
+    "category": "netzwerk",
+    "categoryLabel": "Netzwerktechnik",
+    "description": "Ethercon Kabel 20m Cat 6A aus unserem Mietinventar.",
+    "price": "2,00 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0042",
+      "Inventargruppe": "Kabel › Netzwerk"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 40,
+    "image": null,
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0043",
+    "name": "XLR Kabel 1m",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "XLR Kabel 1m aus unserem Mietinventar.",
+    "price": "0,25 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0043",
+      "Inventargruppe": "Kabel › Audio"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 41,
+    "image": null,
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0044",
+    "name": "XLR Kabel 3m",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "XLR Kabel 3m aus unserem Mietinventar.",
+    "price": "0,25 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0044",
+      "Inventargruppe": "Kabel › Audio"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 42,
+    "image": null,
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0045",
+    "name": "XLR Kabel 5m",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "XLR Kabel 5m aus unserem Mietinventar.",
+    "price": "0,50 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0045",
+      "Inventargruppe": "Kabel › Audio"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 43,
+    "image": null,
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0046",
+    "name": "XLR Kabel 10m",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "XLR Kabel 10m aus unserem Mietinventar.",
+    "price": "1,00 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0046",
+      "Inventargruppe": "Kabel › Audio"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 44,
+    "image": null,
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0047",
+    "name": "XLR Kabel 15m",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "XLR Kabel 15m aus unserem Mietinventar.",
+    "price": "1,50 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0047",
+      "Inventargruppe": "Kabel › Audio"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 45,
+    "image": null,
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0048",
+    "name": "TRS 6,3 Kabel 5m",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "TRS 6,3 Kabel 5m aus unserem Mietinventar.",
+    "price": "5,00 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0048",
+      "Inventargruppe": "Kabel › Audio"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 46,
+    "image": null,
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0049",
+    "name": "TS 6,3 Kabel 5m",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "TS 6,3 Kabel 5m aus unserem Mietinventar.",
+    "price": "5,00 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0049",
+      "Inventargruppe": "Kabel › Audio"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 47,
+    "image": null,
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0050",
+    "name": "HULK 4S TR1",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "HULK 4S TR1 von Botex aus unserem Mietinventar.",
+    "price": "2,00 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0050",
+      "Hersteller": "Botex",
+      "Inventargruppe": "Kabel › Strom › Steckdosenleisten",
+      "Gewicht": "1200 kg"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 48,
+    "image": "/products/eventworx-a-0050.jpg",
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0051",
+    "name": "HULK 2S TR1",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "HULK 2S TR1 von Botex aus unserem Mietinventar.",
+    "price": "1,50 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0051",
+      "Hersteller": "Botex",
+      "Inventargruppe": "Kabel › Strom › Steckdosenleisten",
+      "Gewicht": "800 kg"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 49,
+    "image": "/products/eventworx-a-0051.jpg",
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0052",
+    "name": "HULK 2T TR1",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "HULK 2T TR1 von Botex aus unserem Mietinventar.",
+    "price": "1,50 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0052",
+      "Hersteller": "Botex",
+      "Inventargruppe": "Kabel › Strom › Steckdosenleisten",
+      "Gewicht": "800 kg"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 50,
+    "image": "/products/eventworx-a-0052.jpg",
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0053",
+    "name": "MagicQ Compact Mini Connect",
+    "category": "licht",
+    "categoryLabel": "Lichttechnik",
+    "description": "MagicQ Compact Mini Connect von Chamsys aus unserem Mietinventar.",
+    "price": "48,00 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0053",
+      "Hersteller": "Chamsys",
+      "Inventargruppe": "Lichttechnik › Pult",
+      "Gewicht": "1850 kg"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 51,
+    "image": "/products/eventworx-a-0053.jpg",
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0054",
+    "name": "Cobra 720 LED Wash",
+    "category": "licht",
+    "categoryLabel": "Lichttechnik",
+    "description": "Cobra 720 LED Wash von BeamZ aus unserem Mietinventar.",
+    "price": "13,00 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0054",
+      "Hersteller": "BeamZ",
+      "Inventargruppe": "Lichttechnik › MH › Wash",
+      "Gewicht": "4500 kg"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 52,
+    "image": "/products/eventworx-a-0054.jpg",
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0055",
+    "name": "Cobra Case",
+    "category": "licht",
+    "categoryLabel": "Lichttechnik",
+    "description": "Cobra Case von BeamZ aus unserem Mietinventar.",
+    "price": "12,50 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0055",
+      "Hersteller": "BeamZ",
+      "Inventargruppe": "Lichttechnik › Cases",
+      "Gewicht": "15000 kg"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 53,
+    "image": "/products/eventworx-a-0055.jpg",
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0056",
+    "name": "BS960 Strobe",
+    "category": "licht",
+    "categoryLabel": "Lichttechnik",
+    "description": "BS960 Strobe von BeamZ aus unserem Mietinventar.",
+    "price": "8,00 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0056",
+      "Hersteller": "BeamZ",
+      "Inventargruppe": "Lichttechnik › Scheinwerfer › Strobe",
+      "Gewicht": "3700 kg"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 54,
+    "image": "/products/eventworx-a-0056.jpg",
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0057",
+    "name": "Bar Frost Pix 8",
+    "category": "licht",
+    "categoryLabel": "Lichttechnik",
+    "description": "Bar Frost Pix 8 von Varytec aus unserem Mietinventar.",
+    "price": "3,00 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0057",
+      "Hersteller": "Varytec",
+      "Inventargruppe": "Lichttechnik › Scheinwerfer › Bars",
+      "Gewicht": "1500 kg"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 55,
+    "image": "/products/eventworx-a-0057.jpg",
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0058",
+    "name": "ZQ2367 Beam",
+    "category": "licht",
+    "categoryLabel": "Lichttechnik",
+    "description": "ZQ2367 Beam von UKing aus unserem Mietinventar.",
+    "price": "11,50 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0058",
+      "Hersteller": "UKing",
+      "Inventargruppe": "Lichttechnik › MH › Beam",
+      "Gewicht": "7400 kg"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 56,
+    "image": "/products/eventworx-a-0058.png",
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0059",
+    "name": "ZQ2109 Wash",
+    "category": "licht",
+    "categoryLabel": "Lichttechnik",
+    "description": "ZQ2109 Wash von UKing aus unserem Mietinventar.",
+    "price": "9,00 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0059",
+      "Hersteller": "UKing",
+      "Inventargruppe": "Lichttechnik › MH › Wash",
+      "Gewicht": "5700 kg"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 57,
+    "image": "/products/eventworx-a-0059.png",
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0060",
+    "name": "ZQ2367 Case",
+    "category": "licht",
+    "categoryLabel": "Lichttechnik",
+    "description": "ZQ2367 Case von UKing aus unserem Mietinventar.",
+    "price": "5,00 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0060",
+      "Hersteller": "UKing",
+      "Inventargruppe": "Lichttechnik › Cases",
+      "Gewicht": "16600 kg"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 58,
+    "image": "/products/eventworx-a-0060.png",
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0061",
+    "name": "Headmike - O EW",
+    "category": "ton",
+    "categoryLabel": "Tontechnik",
+    "description": "Headmike - O EW von the t.bone aus unserem Mietinventar.",
+    "price": "2,50 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0061",
+      "Hersteller": "the t.bone",
+      "Inventargruppe": "Tontechnik › Mikrofone"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 59,
+    "image": "/products/eventworx-a-0061.jpg",
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0062",
+    "name": "Netzwerkrack",
+    "category": "netzwerk",
+    "categoryLabel": "Netzwerktechnik",
+    "description": "Netzwerkrack aus unserem Mietinventar.",
+    "price": "25,00 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0062",
+      "Inventargruppe": "Netzwerktechnik",
+      "Gewicht": "5200 kg"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 60,
+    "image": null,
+    "isSet": true,
+    "setItems": [
+      {
+        "productId": "eventworx-a-0026",
+        "quantity": 1
+      },
+      {
+        "productId": "eventworx-a-0027",
+        "quantity": 1
+      },
+      {
+        "productId": "eventworx-a-0030",
+        "quantity": 1
+      },
+      {
+        "productId": "eventworx-a-0028",
+        "quantity": 1
+      },
+      {
+        "productId": "eventworx-a-0032",
+        "quantity": 1
+      },
+      {
+        "productId": "eventworx-a-0033",
+        "quantity": 1
+      },
+      {
+        "productId": "eventworx-a-0023",
+        "quantity": 1
+      },
+      {
+        "productId": "eventworx-a-0074",
+        "quantity": 1
+      },
+      {
+        "productId": "eventworx-a-0034",
+        "quantity": 1
+      },
+      {
+        "productId": "eventworx-a-0075",
+        "quantity": 1
+      }
+    ],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0063",
+    "name": "Ethercon Kabel 15m Cat 6A",
+    "category": "netzwerk",
+    "categoryLabel": "Netzwerktechnik",
+    "description": "Ethercon Kabel 15m Cat 6A aus unserem Mietinventar.",
+    "price": "1,50 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0063",
+      "Inventargruppe": "Kabel › Netzwerk"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 61,
+    "image": null,
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0064",
+    "name": "Ethercon Kabel 1m Cat 6A",
+    "category": "netzwerk",
+    "categoryLabel": "Netzwerktechnik",
+    "description": "Ethercon Kabel 1m Cat 6A aus unserem Mietinventar.",
+    "price": "0,25 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0064",
+      "Inventargruppe": "Kabel › Netzwerk"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 62,
+    "image": null,
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0065",
+    "name": "ZQ1496 Blinder",
+    "category": "licht",
+    "categoryLabel": "Lichttechnik",
+    "description": "ZQ1496 Blinder von UKing aus unserem Mietinventar.",
+    "price": "3,00 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0065",
+      "Hersteller": "UKing",
+      "Inventargruppe": "Lichttechnik › Scheinwerfer › PARs",
+      "Gewicht": "3100 kg"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 63,
+    "image": "/products/eventworx-a-0065.png",
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0066",
+    "name": "MagicQ Compact Mini Connect Tasche",
+    "category": "licht",
+    "categoryLabel": "Lichttechnik",
+    "description": "MagicQ Compact Mini Connect Tasche von Chamsys aus unserem Mietinventar.",
+    "price": "Auf Anfrage",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0066",
+      "Hersteller": "Chamsys",
+      "Inventargruppe": "Lichttechnik › Cases",
+      "Gewicht": "1850 kg"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 64,
+    "image": null,
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0067",
+    "name": "MagicQ Compact Mini Connect Koffer",
+    "category": "licht",
+    "categoryLabel": "Lichttechnik",
+    "description": "MagicQ Compact Mini Connect Koffer von Chamsys aus unserem Mietinventar.",
+    "price": "Auf Anfrage",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0067",
+      "Hersteller": "Chamsys",
+      "Inventargruppe": "Lichttechnik › Cases",
+      "Gewicht": "1850 kg"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 65,
+    "image": null,
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0068",
+    "name": "Rack Power 3 USB",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "Rack Power 3 USB von the t.racks aus unserem Mietinventar.",
+    "price": "1,00 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0068",
+      "Hersteller": "the t.racks",
+      "Inventargruppe": "Kabel › Strom › Steckdosenleisten"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 66,
+    "image": "/products/eventworx-a-0068.jpg",
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0069",
+    "name": "Alto TS 410",
+    "category": "ton",
+    "categoryLabel": "Tontechnik",
+    "description": "Alto TS 410 von Alto aus unserem Mietinventar.",
+    "price": "15,00 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0069",
+      "Hersteller": "Alto",
+      "Inventargruppe": "Tontechnik › PA",
+      "Gewicht": "11800 kg"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 67,
+    "image": "/products/eventworx-a-0069.jpg",
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0070",
+    "name": "Alto TS 15s",
+    "category": "ton",
+    "categoryLabel": "Tontechnik",
+    "description": "Alto TS 15s von Alto aus unserem Mietinventar.",
+    "price": "27,00 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0070",
+      "Hersteller": "Alto",
+      "Inventargruppe": "Tontechnik › PA",
+      "Gewicht": "39600 kg"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 68,
+    "image": "/products/eventworx-a-0070.jpg",
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0071",
+    "name": "Alto TS 410 Cover",
+    "category": "ton",
+    "categoryLabel": "Tontechnik",
+    "description": "Alto TS 410 Cover von Alto aus unserem Mietinventar.",
+    "price": "Auf Anfrage",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0071",
+      "Hersteller": "Alto",
+      "Inventargruppe": "Tontechnik › Zubehör"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 69,
+    "image": null,
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0072",
+    "name": "Alto TS 15S Cover",
+    "category": "ton",
+    "categoryLabel": "Tontechnik",
+    "description": "Alto TS 15S Cover von Alto aus unserem Mietinventar.",
+    "price": "Auf Anfrage",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0072",
+      "Hersteller": "Alto",
+      "Inventargruppe": "Tontechnik › Zubehör"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 70,
+    "image": null,
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0074",
+    "name": "Ethercon RJ45 Kabel 10m Cat 5E",
+    "category": "netzwerk",
+    "categoryLabel": "Netzwerktechnik",
+    "description": "Ethercon RJ45 Kabel 10m Cat 5E aus unserem Mietinventar.",
+    "price": "1,00 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0074",
+      "Inventargruppe": "Kabel › Netzwerk"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 71,
+    "image": null,
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0075",
+    "name": "Schuko TR1 Kabel",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "Anschlusskabel mit niedrigem Querschnitt",
+    "price": "0,50 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0075",
+      "Inventargruppe": "Kabel › Strom"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 72,
+    "image": null,
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0073",
+    "name": "SA Fixtilt 5",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "SA Fixtilt 5 von Gravity aus unserem Mietinventar.",
+    "price": "0,75 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0073",
+      "Hersteller": "Gravity",
+      "Inventargruppe": "Hardware"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 73,
+    "image": "/products/eventworx-a-0073.jpg",
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0076",
+    "name": "BS-2222 Pro Stativ",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "BS-2222 Pro Stativ von Millenium aus unserem Mietinventar.",
+    "price": "2,00 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0076",
+      "Hersteller": "Millenium",
+      "Inventargruppe": "Hardware › Stative",
+      "Gewicht": "3600 kg"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 74,
+    "image": "/products/eventworx-a-0076.jpg",
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0077",
+    "name": "SL 75C",
+    "category": "ton",
+    "categoryLabel": "Tontechnik",
+    "description": "SL 75C von Behringer aus unserem Mietinventar.",
+    "price": "1,00 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0077",
+      "Hersteller": "Behringer",
+      "Inventargruppe": "Tontechnik › Mikrofone"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 75,
+    "image": "/products/eventworx-a-0077.jpg",
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0078",
+    "name": "Mikrofonklemme SL 75C",
+    "category": "ton",
+    "categoryLabel": "Tontechnik",
+    "description": "Mikrofonklemme SL 75C von Behringer aus unserem Mietinventar.",
+    "price": "Auf Anfrage",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0078",
+      "Hersteller": "Behringer",
+      "Inventargruppe": "Tontechnik › Zubehör"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 76,
+    "image": null,
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0079",
+    "name": "DSX 110",
+    "category": "ton",
+    "categoryLabel": "Tontechnik",
+    "description": "DSX 110 von th box pro aus unserem Mietinventar.",
+    "price": "11,00 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0079",
+      "Hersteller": "th box pro",
+      "Inventargruppe": "Tontechnik › PA",
+      "Gewicht": "15480 kg"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 77,
+    "image": "/products/eventworx-a-0079.jpg",
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0080",
+    "name": "Spannfix",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "Spannfix aus unserem Mietinventar.",
+    "price": "0,05 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0080",
+      "Inventargruppe": "Zubehör"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 78,
+    "image": "/products/eventworx-a-0080.jpg",
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0081",
+    "name": "Holdon Midi Clip",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "Holdon Midi Clip aus unserem Mietinventar.",
+    "price": "0,05 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0081",
+      "Inventargruppe": "Zubehör"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 79,
+    "image": "/products/eventworx-a-0081.jpg",
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0082",
+    "name": "NC3 MXX-BAG",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "NC3 MXX-BAG von Neutrik aus unserem Mietinventar.",
+    "price": "Auf Anfrage",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0082",
+      "Hersteller": "Neutrik",
+      "Inventargruppe": "Internes Material › Stecker"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 80,
+    "image": "/products/eventworx-a-0082.jpg",
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0083",
+    "name": "NC3 FXX-BAG",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "NC3 FXX-BAG von Neutrik aus unserem Mietinventar.",
+    "price": "Auf Anfrage",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0083",
+      "Hersteller": "Neutrik",
+      "Inventargruppe": "Internes Material › Stecker"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 81,
+    "image": "/products/eventworx-a-0083.jpg",
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0084",
+    "name": "MS 23",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "MS 23 von Gravity aus unserem Mietinventar.",
+    "price": "1,50 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0084",
+      "Hersteller": "Gravity",
+      "Inventargruppe": "Hardware › Mikrofonständer"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 82,
+    "image": "/products/eventworx-a-0084.jpg",
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0085",
+    "name": "MS B 22",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "MS B 22 von Gravity aus unserem Mietinventar.",
+    "price": "0,75 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0085",
+      "Hersteller": "Gravity",
+      "Inventargruppe": "Hardware › Mikrofonständer"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 83,
+    "image": "/products/eventworx-a-0085.jpg",
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0086",
+    "name": "MS 2322 B",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "MS 2322 B von Gravity aus unserem Mietinventar.",
+    "price": "2,00 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0086",
+      "Hersteller": "Gravity",
+      "Inventargruppe": "Hardware › Mikrofonständer"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 84,
+    "image": "/products/eventworx-a-0086.jpg",
+    "isSet": true,
+    "setItems": [
+      {
+        "productId": "eventworx-a-0084",
+        "quantity": 1
+      },
+      {
+        "productId": "eventworx-a-0085",
+        "quantity": 1
+      },
+      {
+        "productId": "eventworx-a-0108",
+        "quantity": 4
+      }
+    ],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0087",
+    "name": "Funkmikro Rack",
+    "category": "ton",
+    "categoryLabel": "Tontechnik",
+    "description": "Funkmikro Rack aus unserem Mietinventar.",
+    "price": "85,00 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0087",
+      "Inventargruppe": "Tontechnik › Funkstrecken"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 85,
+    "image": null,
+    "isSet": true,
+    "setItems": [
+      {
+        "productId": "eventworx-a-0025",
+        "quantity": 1
+      },
+      {
+        "productId": "eventworx-a-0022",
+        "quantity": 1
+      },
+      {
+        "productId": "eventworx-a-0007",
+        "quantity": 4
+      },
+      {
+        "productId": "eventworx-a-0005",
+        "quantity": 2
+      },
+      {
+        "productId": "eventworx-a-0006",
+        "quantity": 2
+      }
+    ],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0088",
+    "name": "RJ45 Kabel 5m Cat 5E",
+    "category": "netzwerk",
+    "categoryLabel": "Netzwerktechnik",
+    "description": "RJ45 Kabel 5m Cat 5E aus unserem Mietinventar.",
+    "price": "0,50 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0088",
+      "Inventargruppe": "Kabel › Netzwerk"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 86,
+    "image": null,
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0089",
+    "name": "DMX Kabel 5m",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "DMX Kabel 5m aus unserem Mietinventar.",
+    "price": "0,50 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0089",
+      "Inventargruppe": "Kabel › DMX/AES"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 87,
+    "image": null,
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0090",
+    "name": "DMX Kabel 2m",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "DMX Kabel 2m aus unserem Mietinventar.",
+    "price": "0,25 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0090",
+      "Inventargruppe": "Kabel › DMX/AES"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 88,
+    "image": null,
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0091",
+    "name": "DMX Kabel 1m",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "DMX Kabel 1m aus unserem Mietinventar.",
+    "price": "0,25 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0091",
+      "Inventargruppe": "Kabel › DMX/AES"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 89,
+    "image": null,
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0092",
+    "name": "DMX Kabel 3m",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "DMX Kabel 3m aus unserem Mietinventar.",
+    "price": "0,25 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0092",
+      "Inventargruppe": "Kabel › DMX/AES"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 90,
+    "image": null,
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0093",
+    "name": "DMX Kabel 10m",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "DMX Kabel 10m aus unserem Mietinventar.",
+    "price": "1,00 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0093",
+      "Inventargruppe": "Kabel › DMX/AES"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 91,
+    "image": null,
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0094",
+    "name": "DMX Kabel 20m",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "DMX Kabel 20m aus unserem Mietinventar.",
+    "price": "2,00 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0094",
+      "Inventargruppe": "Kabel › DMX/AES"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 92,
+    "image": null,
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0095",
+    "name": "EM 800 Kondensator-Kleinmembranmikrofon",
+    "category": "ton",
+    "categoryLabel": "Tontechnik",
+    "description": "EM 800 Kondensator-Kleinmembranmikrofon von the t.bone aus unserem Mietinventar.",
+    "price": "2,00 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0095",
+      "Hersteller": "the t.bone",
+      "Inventargruppe": "Tontechnik › Mikrofone"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 93,
+    "image": "/products/eventworx-a-0095.jpg",
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0096",
+    "name": "F34 100cm stage black",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "F34 100cm stage black von Global Truss aus unserem Mietinventar.",
+    "price": "10,00 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0096",
+      "Hersteller": "Global Truss",
+      "Inventargruppe": "Hardware › Truss"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 94,
+    "image": "/products/eventworx-a-0096.jpg",
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0097",
+    "name": "F34 200cm stage black",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "F34 200cm stage black von Global Truss aus unserem Mietinventar.",
+    "price": "13,50 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0097",
+      "Hersteller": "Global Truss",
+      "Inventargruppe": "Hardware › Truss"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 95,
+    "image": "/products/eventworx-a-0097.jpg",
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0098",
+    "name": "Bodenplatte Multi 80 x 80cm",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "Bodenplatte Multi 80 x 80cm von Global Truss aus unserem Mietinventar.",
+    "price": "10,50 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0098",
+      "Hersteller": "Global Truss",
+      "Inventargruppe": "Hardware › Truss"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 96,
+    "image": "/products/eventworx-a-0098.jpg",
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0099",
+    "name": "F31150-B Truss 1,5m Black",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "F31150-B Truss 1,5m Black von Global Truss aus unserem Mietinventar.",
+    "price": "3,50 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0099",
+      "Hersteller": "Global Truss",
+      "Inventargruppe": "Hardware › Truss"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 97,
+    "image": "/products/eventworx-a-0099.png",
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0100",
+    "name": "5034-B HalfCoupler w. HalfCone",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "5034-B HalfCoupler w. HalfCone von Global Truss aus unserem Mietinventar.",
+    "price": "1,00 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0100",
+      "Hersteller": "Global Truss",
+      "Inventargruppe": "Hardware › Truss"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 98,
+    "image": "/products/eventworx-a-0100.jpg",
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0101",
+    "name": "Mikrofonklemme EM 800",
+    "category": "ton",
+    "categoryLabel": "Tontechnik",
+    "description": "Mikrofonklemme EM 800 von the t.bone aus unserem Mietinventar.",
+    "price": "Auf Anfrage",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0101",
+      "Hersteller": "the t.bone",
+      "Inventargruppe": "Tontechnik › Zubehör"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 99,
+    "image": null,
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0102",
+    "name": "F31-F34 Doppelkonus Verbinder",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "F31-F34 Doppelkonus Verbinder von Global Truss aus unserem Mietinventar.",
+    "price": "Auf Anfrage",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0102",
+      "Hersteller": "Global Truss",
+      "Inventargruppe": "Hardware › Truss › Zubehör"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 100,
+    "image": "/products/eventworx-a-0102.jpg",
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0103",
+    "name": "F31-F34 Stahlbolzen",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "F31-F34 Stahlbolzen von Global Truss aus unserem Mietinventar.",
+    "price": "Auf Anfrage",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0103",
+      "Hersteller": "Global Truss",
+      "Inventargruppe": "Hardware › Truss › Zubehör"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 101,
+    "image": null,
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0104",
+    "name": "F31-F34 Splint",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "F31-F34 Splint von Global Truss aus unserem Mietinventar.",
+    "price": "Auf Anfrage",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0104",
+      "Hersteller": "Global Truss",
+      "Inventargruppe": "Hardware › Truss › Zubehör"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 102,
+    "image": null,
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0105",
+    "name": "LS 331 B",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "LS 331 B von Gravity aus unserem Mietinventar.",
+    "price": "6,00 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0105",
+      "Hersteller": "Gravity",
+      "Inventargruppe": "Hardware › Stative"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 103,
+    "image": "/products/eventworx-a-0105.jpg",
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0106",
+    "name": "LS Super TB 01",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "LS Super TB 01 von Gravity aus unserem Mietinventar.",
+    "price": "2,00 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0106",
+      "Hersteller": "Gravity",
+      "Inventargruppe": "Hardware › Stative"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 104,
+    "image": "/products/eventworx-a-0106.jpg",
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0107",
+    "name": "TV16 Bolt",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "TV16 Bolt von Adam Hall aus unserem Mietinventar.",
+    "price": "Auf Anfrage",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0107",
+      "Hersteller": "Adam Hall",
+      "Inventargruppe": "Hardware › Stative › Zubehör"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 105,
+    "image": "/products/eventworx-a-0107.jpg",
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0108",
+    "name": "BG MS PB 4 B",
+    "category": "buehne-kabel",
+    "categoryLabel": "Bühne & Kabel",
+    "description": "BG MS PB 4 B von Gravity aus unserem Mietinventar.",
+    "price": "Auf Anfrage",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0108",
+      "Hersteller": "Gravity",
+      "Inventargruppe": "Hardware › Mikrofonständer"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 106,
+    "image": "/products/eventworx-a-0108.jpg",
+    "isSet": false,
+    "setItems": [],
+    "visible": true
+  },
+  {
+    "id": "eventworx-a-0109",
+    "name": "Ethercon RJ45 Kabel 10m Cat 6A",
+    "category": "netzwerk",
+    "categoryLabel": "Netzwerktechnik",
+    "description": "Ethercon RJ45 Kabel 10m Cat 6A aus unserem Mietinventar.",
+    "price": "1,00 €",
+    "unit": "/Tag",
+    "specs": {
+      "Artikelnummer": "A-0109",
+      "Inventargruppe": "Kabel › Netzwerk"
+    },
+    "availability": "Verfügbar",
+    "featured": false,
+    "sortOrder": 107,
+    "image": null,
+    "isSet": false,
+    "setItems": [],
+    "visible": true
   }
 ]

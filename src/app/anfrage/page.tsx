@@ -29,6 +29,8 @@ function AnfrageForm() {
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [responseMessage, setResponseMessage] = useState("");
+  const [startedAt] = useState(() => Date.now());
 
   function toggleLeistung(key: string) {
     setForm((prev) => ({
@@ -54,7 +56,7 @@ function AnfrageForm() {
     return errs;
   }
 
-  async function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const errs = validate();
     setErrors(errs);
@@ -62,11 +64,14 @@ function AnfrageForm() {
 
     setStatus("sending");
     try {
+      const data = new FormData(e.currentTarget);
       const res = await fetch("/api/anfrage", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...form,
+          website: data.get("website") || "",
+          startedAt,
           produkte: cart.items.map((i) => ({
             id: i.id,
             name: i.name,
@@ -76,10 +81,17 @@ function AnfrageForm() {
           })),
         }),
       });
+      const result = await res.json();
       if (res.ok) {
+        setResponseMessage(
+          result.mailSent
+            ? "Vielen Dank! Die Anfrage wurde an sales@prostage.de gesendet."
+            : "Vielen Dank! Die Anfrage wurde gespeichert. Der E-Mail-Versand ist derzeit noch nicht konfiguriert."
+        );
         setStatus("sent");
         cart.clearCart();
       } else {
+        setResponseMessage(result.error || "Fehler beim Senden.");
         setStatus("error");
       }
     } catch {
@@ -97,7 +109,7 @@ function AnfrageForm() {
         </div>
         <h2 className="font-heading text-2xl font-bold text-gray-900 mb-2">Anfrage gesendet!</h2>
         <p className="text-gray-500">
-          Vielen Dank für Ihre Anfrage. Wir melden uns schnellstmöglich bei Ihnen.
+          {responseMessage || "Vielen Dank für Ihre Anfrage. Wir melden uns schnellstmöglich bei Ihnen."}
         </p>
       </div>
     );
@@ -110,6 +122,10 @@ function AnfrageForm() {
 
   return (
     <form onSubmit={handleSubmit} noValidate className="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm">
+      <div className="absolute -left-[10000px] h-px w-px overflow-hidden" aria-hidden="true">
+        <label htmlFor="rental-website">Website</label>
+        <input id="rental-website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+      </div>
       {/* Selected Products */}
       {cart.items.length > 0 && (
         <>
@@ -141,7 +157,7 @@ function AnfrageForm() {
               </div>
             ))}
             <Link
-              href="/inventar"
+              href="/mieten"
               className="inline-flex items-center gap-1.5 text-xs font-semibold text-brand hover:underline mt-1"
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -160,7 +176,7 @@ function AnfrageForm() {
             Noch keine Artikel ausgewählt.
           </p>
           <Link
-            href="/inventar"
+            href="/mieten"
             className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand hover:underline"
           >
             Zum Inventar — Artikel auswählen
@@ -315,14 +331,14 @@ function AnfrageForm() {
 
       {status === "error" && (
         <p className="text-sm text-red-500 text-center mt-3">
-          Fehler beim Senden. Bitte versuchen Sie es erneut.
+          {responseMessage || "Fehler beim Senden. Bitte versuchen Sie es erneut."}
         </p>
       )}
 
       <p className="text-xs text-gray-400 text-center mt-4">
         Oder direkt per E-Mail:{" "}
-        <a href="mailto:info@prostage.de" className="text-brand hover:underline">
-          info@prostage.de
+        <a href="mailto:sales@prostage.de" className="text-brand hover:underline">
+          sales@prostage.de
         </a>{" "}
         · Telefon:{" "}
         <a href="tel:+49 1638653411" className="text-brand hover:underline">
@@ -335,13 +351,13 @@ function AnfrageForm() {
 
 export default function AnfragePage() {
   return (
-    <section className="pt-32 pb-24 bg-gradient-to-b from-gray-50 to-white min-h-screen">
+    <section className="pt-16 sm:pt-20 pb-24 bg-gradient-to-b from-gray-50 to-white min-h-screen">
       <div className="max-w-2xl mx-auto px-6">
         <p className="text-sm font-semibold uppercase tracking-widest text-brand mb-3">
-          — Kontakt
+          — Mietanfrage
         </p>
         <h1 className="font-heading text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4">
-          Jetzt <span className="text-brand">anfragen</span>
+          Equipment <span className="text-brand">anfragen</span>
         </h1>
         <p className="text-gray-500 text-lg leading-relaxed mb-12">
           Erzählen Sie uns von Ihrem Event — wir erstellen Ihnen ein

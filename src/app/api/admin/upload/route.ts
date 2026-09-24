@@ -2,16 +2,21 @@ import { NextResponse } from "next/server";
 import { promises as fs } from "fs";
 import path from "path";
 import { getImagesDir } from "@/lib/products";
+import { isAdminAuthenticated } from "@/lib/auth";
+import { generateId } from "@/lib/products";
 
 export async function POST(request: Request) {
+  if (!(await isAdminAuthenticated())) {
+    return NextResponse.json({ error: "Nicht autorisiert." }, { status: 401 });
+  }
   try {
     const formData = await request.formData();
     const file = formData.get("file") as File | null;
-    const productId = formData.get("productId") as string | null;
+    const assetId = (formData.get("assetId") || formData.get("productId")) as string | null;
 
-    if (!file || !productId) {
+    if (!file || !assetId) {
       return NextResponse.json(
-        { error: "Datei und Produkt-ID sind erforderlich." },
+        { error: "Datei und Kennung sind erforderlich." },
         { status: 400 }
       );
     }
@@ -33,9 +38,13 @@ export async function POST(request: Request) {
       );
     }
 
+    const safeAssetId = generateId(assetId);
+    if (!safeAssetId) {
+      return NextResponse.json({ error: "Ungültige Kennung." }, { status: 400 });
+    }
     const ext = file.name.split(".").pop()?.toLowerCase() || "jpg";
     const sanitizedExt = ["jpg", "jpeg", "png", "webp", "gif"].includes(ext) ? ext : "jpg";
-    const filename = `${productId}.${sanitizedExt}`;
+    const filename = `${safeAssetId}.${sanitizedExt}`;
 
     const imagesDir = getImagesDir();
     await fs.mkdir(imagesDir, { recursive: true });
@@ -44,7 +53,7 @@ export async function POST(request: Request) {
     try {
       const files = await fs.readdir(imagesDir);
       for (const f of files) {
-        if (f.startsWith(`${productId}.`)) {
+        if (f.startsWith(`${safeAssetId}.`)) {
           await fs.unlink(path.join(imagesDir, f));
         }
       }
